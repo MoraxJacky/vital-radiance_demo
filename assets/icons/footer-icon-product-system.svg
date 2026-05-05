@@ -1,0 +1,21 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="productGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(98 92) rotate(90) scale(74)">
+      <stop stop-color="#69D7FF" stop-opacity="0.52"/>
+      <stop offset="0.58" stop-color="#69D7FF" stop-opacity="0.13"/>
+      <stop offset="1" stop-color="#69D7FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="productCapsule" x1="52" y1="119" x2="140" y2="73" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF6D35"/>
+      <stop offset="0.48" stop-color="#E9C985"/>
+      <stop offset="1" stop-color="#F4F8FB"/>
+    </linearGradient>
+  </defs>
+  <circle cx="96" cy="96" r="78" fill="url(#productGlow)"/>
+  <circle cx="96" cy="96" r="62" stroke="#69D7FF" stroke-opacity="0.28" stroke-width="2"/>
+  <path d="M62 103C55.9 96.9 55.9 87.1 62 81L80.8 62.2C86.9 56.1 96.8 56.1 102.8 62.2L130 89.4C136.1 95.5 136.1 105.3 130 111.4L111.2 130.2C105.1 136.3 95.2 136.3 89.2 130.2L62 103Z" fill="url(#productCapsule)" fill-opacity="0.92"/>
+  <path d="M82 64L128 110" stroke="#061016" stroke-opacity="0.32" stroke-width="4" stroke-linecap="round"/>
+  <path d="M74 111C82 98.5 92.8 94 106.2 97.5C116.1 100.1 122.7 96.7 128 87" stroke="#061016" stroke-opacity="0.45" stroke-width="5" stroke-linecap="round"/>
+  <path d="M55 134C70.4 151.4 118.8 156.2 142 123" stroke="#E9C985" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round"/>
+  <path d="M134 54C143.6 64.2 146.8 76.7 143.6 91.6" stroke="#69D7FF" stroke-opacity="0.76" stroke-width="4" stroke-linecap="round"/>
+</svg>

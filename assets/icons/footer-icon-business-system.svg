@@ -1,0 +1,26 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="businessGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(94 94) rotate(90) scale(76)">
+      <stop stop-color="#E9C985" stop-opacity="0.42"/>
+      <stop offset="0.56" stop-color="#69D7FF" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#69D7FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="businessLine" x1="48" y1="130" x2="145" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#69D7FF"/>
+      <stop offset="0.56" stop-color="#E9C985"/>
+      <stop offset="1" stop-color="#FF6D35"/>
+    </linearGradient>
+  </defs>
+  <circle cx="96" cy="96" r="78" fill="url(#businessGlow)"/>
+  <path d="M45 137H148" stroke="#DDEBF1" stroke-opacity="0.3" stroke-width="3" stroke-linecap="round"/>
+  <path d="M55 124L76 101L97 111L122 76L143 65" stroke="url(#businessLine)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="55" y="108" width="12" height="29" rx="6" fill="#69D7FF" fill-opacity="0.45"/>
+  <rect x="80" y="88" width="12" height="49" rx="6" fill="#69D7FF" fill-opacity="0.34"/>
+  <rect x="105" y="96" width="12" height="41" rx="6" fill="#E9C985" fill-opacity="0.42"/>
+  <rect x="130" y="72" width="12" height="65" rx="6" fill="#FF6D35" fill-opacity="0.42"/>
+  <circle cx="76" cy="101" r="8" fill="#061016" stroke="#69D7FF" stroke-width="4"/>
+  <circle cx="97" cy="111" r="8" fill="#061016" stroke="#E9C985" stroke-width="4"/>
+  <circle cx="122" cy="76" r="8" fill="#061016" stroke="#FF6D35" stroke-width="4"/>
+  <path d="M51 53H118" stroke="#DDEBF1" stroke-opacity="0.34" stroke-width="4" stroke-linecap="round"/>
+  <path d="M51 68H96" stroke="#69D7FF" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round"/>
+</svg>
