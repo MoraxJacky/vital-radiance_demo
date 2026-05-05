@@ -453,8 +453,9 @@ function App() {
 
     const updateProgress = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
+      const navScrollY = isHome ? Math.max(0, window.scrollY - 10) : window.scrollY;
       setScrollProgress(max > 0 ? window.scrollY / max : 0);
-      setNavMerge(Math.min(1, Math.max(0, window.scrollY / 150)));
+      setNavMerge(Math.min(1, Math.max(0, navScrollY / 150)));
       updateFooterRevealState();
     };
     updateProgress();
@@ -470,7 +471,7 @@ function App() {
       document.documentElement.style.removeProperty("--footer-reveal-offset");
       document.documentElement.style.removeProperty("--backtop-footer-lift");
     };
-  }, [route]);
+  }, [isHome, route]);
 
   useEffect(() => {
     const navLinks = navLinksRef.current;
@@ -618,6 +619,7 @@ function App() {
       ".financial-operations-grid",
       ".financial-projections-grid",
       ".financial-risk-layout",
+      ".financial-risk-side",
       ".financial-chart",
       ".five-year-motion",
       ".financial-investor-panel",
@@ -1056,7 +1058,13 @@ function App() {
   ]
     .filter(Boolean)
     .join(" ");
-  const navClassName = ["nav", navMerge > 0.98 ? "nav-merged" : ""].filter(Boolean).join(" ");
+  const navClassName = [
+    "nav",
+    isHome && navMerge <= 0.001 ? "nav-home-top" : "",
+    navMerge > 0.98 ? "nav-merged" : ""
+  ]
+    .filter(Boolean)
+    .join(" ");
   const backTopClassName = ["back-to-top", navMerge > 0.12 ? "is-collapsed" : "is-top"]
     .filter(Boolean)
     .join(" ");

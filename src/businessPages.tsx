@@ -1017,126 +1017,106 @@ function FinancialPlanPage() {
           ["Sensitivity Analysis", "#sensitivity"]
         ]}
       />
-      <section className="business-section two-column visual-led financial-kpi-section">
-        <div>
-          <SectionHeader eyebrow="Model Summary" title="Financial KPI Cards" />
-          <KPIGrid items={businessPlan.snapshotKpis} />
-          <p className="table-note">{businessPlan.financial.disclaimer}</p>
+      <section className="business-section financial-dashboard-section">
+        <SectionHeader eyebrow="Model Summary" title="Financial Model Dashboard" />
+        <div className="financial-dashboard-layout">
+          <div className="financial-dashboard-kpis">
+            <KPIGrid items={businessPlan.snapshotKpis} />
+            <p className="table-note">{businessPlan.financial.disclaimer}</p>
+          </div>
+          <div className="financial-table-pane">
+            <FinancialPaneHeading eyebrow="Assumptions" title="Base Case Inputs" />
+            <ResponsiveTable
+              caption="Financial assumptions"
+              className="financial-list-table financial-assumptions-table"
+              headers={["Item", "Assumption"]}
+              rows={businessPlan.financial.assumptions}
+            />
+          </div>
+          <FinancialChart />
         </div>
-        <ImageStoryPanel
-          image={assets.businessFinancialKpi}
-          alt="Vital Radiance branded financial KPI scene with abstract glass panels"
-          title="Finance still belongs to the product"
-          body="The model summary now keeps the commercial object visible, so the numbers feel connected to launch readiness rather than isolated cards."
-          stats={[
-            ["Payback", "11.8 months"],
-            ["ROI", "104.6%"]
-          ]}
-        />
       </section>
-      <section className="business-section two-column financial-assumptions-section">
-        <div className="financial-table-pane">
-          <SectionHeader eyebrow="Assumptions" title="Base Case Inputs" />
+      <section className="business-section financial-operations-section">
+        <SectionHeader eyebrow="Capital and Cost" title="Investment, Unit Economics and Payback" />
+        <div className="financial-operations-grid">
+          <div className="financial-table-pane financial-investment-pane">
+            <FinancialPaneHeading eyebrow="Investment" title="Initial Investment" />
+            <ResponsiveTable
+              caption="Initial investment table"
+              className="financial-list-table financial-investment-table"
+              headers={["Item", "Estimated Cost"]}
+              rows={businessPlan.financial.initialInvestment}
+            />
+          </div>
+          <div className="financial-table-pane">
+            <FinancialPaneHeading eyebrow="Variable Cost" title="Cost per Bottle" />
+            <ResponsiveTable
+              caption="Variable cost per bottle"
+              className="financial-list-table financial-cost-table"
+              headers={["Cost Item", "Estimated Cost per Bottle"]}
+              rows={businessPlan.financial.variableCosts}
+            />
+          </div>
+          <div className="financial-table-pane">
+            <FinancialPaneHeading eyebrow="Fixed Cost" title="Monthly Operating Cost" />
+            <ResponsiveTable
+              caption="Monthly fixed operating costs"
+              className="financial-list-table financial-cost-table"
+              headers={["Cost Item", "Monthly Cost"]}
+              rows={businessPlan.financial.fixedCosts}
+            />
+          </div>
+        </div>
+      </section>
+      <section className="business-section financial-projections-section" id="monthly-projection">
+        <SectionHeader eyebrow="Projection" title="Monthly Cash Flow and 5-Year Scale-up" />
+        <div className="financial-projections-grid">
+          <div className="financial-table-pane financial-monthly-pane">
+            <FinancialPaneHeading eyebrow="12-Month Projection" title="Cash Flow, Unit: CNY 10,000" />
+            <ResponsiveTable
+              caption="12-month projection, unit CNY 10,000"
+              className="financial-list-table financial-projection-table financial-monthly-table"
+              note="Scroll horizontally on mobile."
+              headers={["Month", "Sales Volume", "Revenue", "Variable Cost", "Fixed Cost", "After-tax Cash Flow", "Cumulative Cash"]}
+              rows={businessPlan.financial.monthlyProjection}
+            />
+          </div>
+          <div className="financial-table-pane financial-yearly-table-pane">
+            <FinancialPaneHeading eyebrow="5-Year Projection" title="Scale-up View, Unit: CNY million" />
+            <ResponsiveTable
+              caption="5-year projection, unit CNY million"
+              className="financial-list-table financial-projection-table financial-yearly-table"
+              note="Scroll horizontally on mobile."
+              headers={["Year", "Sales Volume", "Revenue", "Variable Cost", "Fixed Cost", "Estimated Net Profit", "Cumulative Cash after Initial Investment"]}
+              rows={businessPlan.financial.yearlyProjection}
+            />
+          </div>
+          <FiveYearMotionChart />
+        </div>
+      </section>
+      <section className="business-section financial-sensitivity-section financial-risk-section" id="sensitivity">
+        <SectionHeader eyebrow="Sensitivity Analysis" title="Downside, Upside and Investor Response" />
+        <div className="financial-risk-layout">
           <ResponsiveTable
-            caption="Financial assumptions"
-            className="financial-list-table financial-assumptions-table"
-            headers={["Item", "Assumption"]}
-            rows={businessPlan.financial.assumptions}
+            caption="Sensitivity analysis"
+            className="financial-list-table financial-sensitivity-table"
+            headers={["Scenario", "Year 1 Net Profit", "Change vs Base Case", "Response Strategy"]}
+            rows={businessPlan.financial.sensitivity}
           />
-        </div>
-        <FinancialChart />
-      </section>
-      <section className="business-section two-column visual-led financial-investment-section">
-        <div className="financial-table-pane">
-          <SectionHeader eyebrow="Investment" title="Initial Investment" />
-          <ResponsiveTable
-            caption="Initial investment table"
-            className="financial-list-table financial-investment-table"
-            headers={["Item", "Estimated Cost"]}
-            rows={businessPlan.financial.initialInvestment}
-          />
-        </div>
-        <ImageStoryPanel
-          image={assets.businessManufacturing}
-          alt="Vital Radiance branded production capability scene for launch investment readiness"
-          title="Where the launch budget becomes capability"
-          body="The investment table is paired with quality, documentation and facility readiness cues to reduce the spreadsheet-heavy feel."
-          stats={[
-            ["Initial", "CNY 20m"],
-            ["Use case", "Launch readiness"]
-          ]}
-        />
-      </section>
-      <section className="business-section two-column financial-cost-section">
-        <div className="financial-table-pane">
-          <SectionHeader eyebrow="Variable Cost" title="Cost per Bottle" />
-          <ResponsiveTable
-            caption="Variable cost per bottle"
-            className="financial-list-table financial-cost-table"
-            headers={["Cost Item", "Estimated Cost per Bottle"]}
-            rows={businessPlan.financial.variableCosts}
-          />
-        </div>
-        <div className="financial-table-pane">
-          <SectionHeader eyebrow="Fixed Cost" title="Monthly Operating Cost" />
-          <ResponsiveTable
-            caption="Monthly fixed operating costs"
-            className="financial-list-table financial-cost-table"
-            headers={["Cost Item", "Monthly Cost"]}
-            rows={businessPlan.financial.fixedCosts}
-          />
+          <div className="financial-risk-side">
+            <div className="financial-table-pane">
+              <FinancialPaneHeading eyebrow="Break-even" title="Payback and ROI" />
+              <ResponsiveTable
+                caption="Break-even, payback and ROI formulas"
+                className="financial-list-table financial-break-even-table"
+                headers={["Metric", "Value", "Formula / Notes"]}
+                rows={businessPlan.financial.breakEven}
+              />
+            </div>
+            <FinancialInvestorPanel />
+          </div>
         </div>
       </section>
-      <section className="business-section financial-monthly-section" id="monthly-projection">
-        <SectionHeader eyebrow="12-Month Projection" title="Cash Flow, Unit: CNY 10,000" />
-        <ResponsiveTable
-          caption="12-month projection, unit CNY 10,000"
-          className="financial-list-table financial-projection-table financial-monthly-table"
-          note="Scroll horizontally on mobile."
-          headers={["Month", "Sales Volume", "Revenue", "Variable Cost", "Fixed Cost", "After-tax Cash Flow", "Cumulative Cash"]}
-          rows={businessPlan.financial.monthlyProjection}
-        />
-      </section>
-      <section className="business-section two-column financial-yearly-section">
-        <div className="financial-table-pane financial-yearly-table-pane">
-          <SectionHeader eyebrow="5-Year Projection" title="Scale-up View, Unit: CNY million" />
-          <ResponsiveTable
-            caption="5-year projection, unit CNY million"
-            className="financial-list-table financial-projection-table financial-yearly-table"
-            note="Scroll horizontally on mobile."
-            headers={["Year", "Sales Volume", "Revenue", "Variable Cost", "Fixed Cost", "Estimated Net Profit", "Cumulative Cash after Initial Investment"]}
-            rows={businessPlan.financial.yearlyProjection}
-          />
-        </div>
-        <FiveYearMotionChart />
-      </section>
-      <section className="business-section two-column visual-led financial-break-even-section">
-        <div className="financial-table-pane">
-          <SectionHeader eyebrow="Break-even" title="Payback and ROI" />
-          <ResponsiveTable
-            caption="Break-even, payback and ROI formulas"
-            className="financial-list-table financial-break-even-table"
-            headers={["Metric", "Value", "Formula / Notes"]}
-            rows={businessPlan.financial.breakEven}
-          />
-        </div>
-        <BreakEvenVisual />
-      </section>
-      <section className="business-section financial-sensitivity-section" id="sensitivity">
-        <SectionHeader eyebrow="Sensitivity Analysis" title="Downside and Upside Scenarios" />
-        <ResponsiveTable
-          caption="Sensitivity analysis"
-          className="financial-list-table financial-sensitivity-table"
-          headers={["Scenario", "Year 1 Net Profit", "Change vs Base Case", "Response Strategy"]}
-          rows={businessPlan.financial.sensitivity}
-        />
-      </section>
-      <PageCTA
-        className="financial-final-cta"
-        title="Have investor or partnership questions?"
-        href="#/contact"
-        label="Contact Investor Relations"
-      />
     </>
   );
 }
@@ -1542,6 +1522,49 @@ function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
       <p className="section-label">{eyebrow}</p>
       <h2>{title}</h2>
     </div>
+  );
+}
+
+function FinancialPaneHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+  return (
+    <div className="financial-pane-heading">
+      <p>{eyebrow}</p>
+      <h3>{title}</h3>
+    </div>
+  );
+}
+
+function FinancialInvestorPanel() {
+  const stats = [
+    ["Base net profit", "CNY 20.92m"],
+    ["Payback", "11.8 months"],
+    ["Year 1 ROI", "104.6%"],
+    ["Break-even", "4,321 / month"]
+  ] as const;
+
+  return (
+    <article className="financial-investor-panel business-card">
+      <span>
+        <Handshake />
+      </span>
+      <h3>Investor Reading</h3>
+      <p>
+        The risk table now sits beside the funding conversation, so downside actions, payback and
+        contact intent are read as one decision path.
+      </p>
+      <div className="financial-investor-stats">
+        {stats.map(([label, value]) => (
+          <span key={label}>
+            <b>{value}</b>
+            {label}
+          </span>
+        ))}
+      </div>
+      <a className="primary-cta" href="#/contact">
+        Contact IR
+        <ChevronRight size={18} />
+      </a>
+    </article>
   );
 }
 
@@ -1994,7 +2017,7 @@ function FinancialChart() {
           const profit = Number(row[5]);
           return (
             <div className="bar-column" key={row[0]} style={{ "--motion-index": index } as React.CSSProperties}>
-              <i style={{ "--bar-height": `${Math.max(42, (profit / maxProfit) * 250)}px` } as React.CSSProperties} />
+              <i style={{ "--bar-height": `${Math.max(42, (profit / maxProfit) * 170)}px` } as React.CSSProperties} />
               <strong>{row[5]}</strong>
               <span>{row[0].replace("Year ", "Y")}</span>
             </div>
