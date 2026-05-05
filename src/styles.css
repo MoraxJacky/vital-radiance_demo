@@ -5878,10 +5878,11 @@ details[open] p {
 
 .business-hero {
   position: relative;
-  min-height: calc(100svh - 76px);
+  min-height: 100svh;
+  margin-top: calc(-1 * var(--nav-height));
   display: grid;
   align-items: center;
-  padding: clamp(96px, 12vw, 156px) clamp(20px, 6vw, 92px);
+  padding: calc(var(--nav-height) + clamp(96px, 12vw, 156px)) clamp(20px, 6vw, 92px) clamp(96px, 12vw, 156px);
   overflow: hidden;
   isolation: isolate;
 }
@@ -7786,9 +7787,10 @@ body::-webkit-scrollbar,
   }
 
   .business-route .business-hero {
-    height: calc(100svh - var(--nav-height));
+    height: 100svh;
     min-height: 0;
-    padding-top: clamp(48px, 6svh, 74px);
+    margin-top: calc(-1 * var(--nav-height));
+    padding-top: calc(var(--nav-height) + clamp(48px, 6svh, 74px));
     padding-bottom: clamp(40px, 5svh, 68px);
     overflow-x: hidden;
     overflow-y: auto;
@@ -7964,7 +7966,8 @@ body::-webkit-scrollbar,
 
   .business-hero {
     min-height: auto;
-    padding-top: 106px;
+    margin-top: calc(-1 * var(--nav-height));
+    padding-top: calc(var(--nav-height) + 106px);
   }
 
   .business-section.two-column,
@@ -8010,7 +8013,7 @@ body::-webkit-scrollbar,
   }
 
   .business-hero {
-    padding: 96px 18px 74px;
+    padding: calc(var(--nav-height) + 96px) 18px 74px;
   }
 
   .business-hero::after {
