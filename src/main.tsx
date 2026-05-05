@@ -336,7 +336,12 @@ const FAQ_FRAME_SAMPLE_COUNT = 240;
 const HOME_HASH = "#/";
 
 function resetInitialLoadToHome() {
-  if (window.location.hash === HOME_HASH) return;
+  const hash = window.location.hash;
+  if (hash === HOME_HASH) return;
+  if (hash.startsWith("#/")) {
+    const candidate = `/${hash.slice(2).split("?")[0].split("#")[0] || ""}`;
+    if (supportedRoutes.has(candidate)) return;
+  }
   window.history.replaceState(window.history.state, "", `${window.location.pathname}${window.location.search}${HOME_HASH}`);
 }
 
