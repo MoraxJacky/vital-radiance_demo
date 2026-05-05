@@ -18540,6 +18540,260 @@ body {
   }
 }
 
+/* Financial table boundary pass: fit the tables that can fit, instead of forcing all of them into horizontal panes. */
+.business-route.business-financial .financial-list-table {
+  display: flex !important;
+  flex-direction: column !important;
+  align-content: stretch !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: clamp(10px, 1vw, 16px) !important;
+}
+
+.business-route.business-financial .financial-list-table table,
+.business-route.business-financial .financial-projection-table table,
+.business-route.business-financial .financial-monthly-table table,
+.business-route.business-financial .financial-yearly-table table,
+.business-route.business-financial .financial-sensitivity-table table,
+.business-route.business-financial .financial-break-even-table table {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  flex: 1 1 auto !important;
+  align-self: stretch !important;
+  justify-self: stretch !important;
+  table-layout: fixed !important;
+  border-spacing: 0 clamp(4px, 0.52svh, 7px) !important;
+}
+
+.business-route.business-financial .financial-list-table th,
+.business-route.business-financial .financial-list-table td {
+  padding: clamp(7px, 0.74svh, 10px) clamp(7px, 0.72vw, 11px) !important;
+  font-size: clamp(10.5px, 0.72vw, 12.4px) !important;
+  line-height: 1.18 !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+}
+
+.business-route.business-financial .financial-projection-table th,
+.business-route.business-financial .financial-projection-table td,
+.business-route.business-financial .financial-sensitivity-table th,
+.business-route.business-financial .financial-sensitivity-table td {
+  padding: clamp(6px, 0.62svh, 8px) clamp(5px, 0.52vw, 8px) !important;
+  font-size: clamp(9.6px, 0.66vw, 11.2px) !important;
+  line-height: 1.12 !important;
+}
+
+.business-route.business-financial .financial-assumptions-table :is(th, td):nth-child(1) {
+  width: 56%;
+}
+
+.business-route.business-financial .financial-assumptions-table :is(th, td):nth-child(2) {
+  width: 44%;
+}
+
+.business-route.business-financial .financial-investment-table :is(th, td):nth-child(1),
+.business-route.business-financial .financial-cost-table :is(th, td):nth-child(1) {
+  width: 66%;
+}
+
+.business-route.business-financial .financial-investment-table :is(th, td):nth-child(2),
+.business-route.business-financial .financial-cost-table :is(th, td):nth-child(2) {
+  width: 34%;
+}
+
+.business-route.business-financial .financial-break-even-table :is(th, td):nth-child(1) {
+  width: 30%;
+}
+
+.business-route.business-financial .financial-break-even-table :is(th, td):nth-child(2) {
+  width: 25%;
+}
+
+.business-route.business-financial .financial-break-even-table :is(th, td):nth-child(3) {
+  width: 45%;
+}
+
+.business-route.business-financial .financial-monthly-table :is(th, td):nth-child(1) {
+  width: 8%;
+}
+
+.business-route.business-financial .financial-monthly-table :is(th, td):nth-child(2) {
+  width: 14%;
+}
+
+.business-route.business-financial .financial-monthly-table :is(th, td):nth-child(3),
+.business-route.business-financial .financial-monthly-table :is(th, td):nth-child(5) {
+  width: 12%;
+}
+
+.business-route.business-financial .financial-monthly-table :is(th, td):nth-child(4) {
+  width: 13%;
+}
+
+.business-route.business-financial .financial-monthly-table :is(th, td):nth-child(6) {
+  width: 19%;
+}
+
+.business-route.business-financial .financial-monthly-table :is(th, td):nth-child(7) {
+  width: 22%;
+}
+
+.business-route.business-financial .financial-yearly-table :is(th, td):nth-child(1) {
+  width: 11%;
+}
+
+.business-route.business-financial .financial-yearly-table :is(th, td):nth-child(2) {
+  width: 14%;
+}
+
+.business-route.business-financial .financial-yearly-table :is(th, td):nth-child(3),
+.business-route.business-financial .financial-yearly-table :is(th, td):nth-child(5) {
+  width: 12%;
+}
+
+.business-route.business-financial .financial-yearly-table :is(th, td):nth-child(4) {
+  width: 13%;
+}
+
+.business-route.business-financial .financial-yearly-table :is(th, td):nth-child(6) {
+  width: 17%;
+}
+
+.business-route.business-financial .financial-yearly-table :is(th, td):nth-child(7) {
+  width: 21%;
+}
+
+.business-route.business-financial .financial-sensitivity-table :is(th, td):nth-child(1) {
+  width: 28%;
+}
+
+.business-route.business-financial .financial-sensitivity-table :is(th, td):nth-child(2) {
+  width: 22%;
+}
+
+.business-route.business-financial .financial-sensitivity-table :is(th, td):nth-child(3) {
+  width: 18%;
+}
+
+.business-route.business-financial .financial-sensitivity-table :is(th, td):nth-child(4) {
+  width: 32%;
+}
+
+@media (max-width: 720px) {
+  .business-route.business-financial .financial-list-table {
+    padding: 5px !important;
+  }
+
+  .business-route.business-financial .financial-list-table table {
+    border-spacing: 0 2px !important;
+  }
+
+  .business-route.business-financial .financial-list-table th,
+  .business-route.business-financial .financial-list-table td {
+    padding: 4px 5px !important;
+    font-size: 8.6px !important;
+    line-height: 1.04 !important;
+  }
+
+  .business-route.business-financial .financial-projection-table th,
+  .business-route.business-financial .financial-projection-table td {
+    padding: 4px 3px !important;
+    font-size: 7.9px !important;
+    line-height: 1.02 !important;
+  }
+
+  .business-route.business-financial .financial-break-even-table th,
+  .business-route.business-financial .financial-break-even-table td,
+  .business-route.business-financial .financial-sensitivity-table th,
+  .business-route.business-financial .financial-sensitivity-table td {
+    padding: 4px 4px !important;
+    font-size: 8px !important;
+    line-height: 1.04 !important;
+  }
+
+  .business-route.business-financial .financial-list-table caption,
+  .business-route.business-financial .financial-list-table .table-note {
+    margin-bottom: 3px !important;
+    font-size: 9px !important;
+    line-height: 1 !important;
+  }
+
+  .business-route.business-financial .financial-list-table tbody th::before {
+    width: 5px !important;
+    height: 5px !important;
+    margin-right: 5px !important;
+    box-shadow: 0 0 10px rgba(105, 215, 255, 0.62) !important;
+  }
+
+  .business-route.business-financial .financial-monthly-table :is(th, td):nth-child(1) {
+    width: 7%;
+  }
+
+  .business-route.business-financial .financial-monthly-table :is(th, td):nth-child(2) {
+    width: 15%;
+  }
+
+  .business-route.business-financial .financial-monthly-table :is(th, td):nth-child(3),
+  .business-route.business-financial .financial-monthly-table :is(th, td):nth-child(5) {
+    width: 12%;
+  }
+
+  .business-route.business-financial .financial-monthly-table :is(th, td):nth-child(4) {
+    width: 14%;
+  }
+
+  .business-route.business-financial .financial-monthly-table :is(th, td):nth-child(6) {
+    width: 18%;
+  }
+
+  .business-route.business-financial .financial-monthly-table :is(th, td):nth-child(7) {
+    width: 22%;
+  }
+
+  .business-route.business-financial .financial-yearly-table :is(th, td):nth-child(1) {
+    width: 10%;
+  }
+
+  .business-route.business-financial .financial-yearly-table :is(th, td):nth-child(2) {
+    width: 15%;
+  }
+
+  .business-route.business-financial .financial-yearly-table :is(th, td):nth-child(3),
+  .business-route.business-financial .financial-yearly-table :is(th, td):nth-child(5) {
+    width: 12%;
+  }
+
+  .business-route.business-financial .financial-yearly-table :is(th, td):nth-child(4) {
+    width: 13%;
+  }
+
+  .business-route.business-financial .financial-yearly-table :is(th, td):nth-child(6) {
+    width: 17%;
+  }
+
+  .business-route.business-financial .financial-yearly-table :is(th, td):nth-child(7) {
+    width: 21%;
+  }
+
+  .business-route.business-financial .financial-sensitivity-table :is(th, td):nth-child(1) {
+    width: 30%;
+  }
+
+  .business-route.business-financial .financial-sensitivity-table :is(th, td):nth-child(2) {
+    width: 22%;
+  }
+
+  .business-route.business-financial .financial-sensitivity-table :is(th, td):nth-child(3) {
+    width: 16%;
+  }
+
+  .business-route.business-financial .financial-sensitivity-table :is(th, td):nth-child(4) {
+    width: 32%;
+  }
+}
+
 /* Final-page pass: each route's last screen reveals icon, title and action text in order. */
 .motion-ready [data-final-page] > .motion-reveal {
   opacity: 0;
