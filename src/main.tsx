@@ -527,7 +527,7 @@ function App() {
 
     const updateProgress = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      const navScrollY = isHome ? Math.max(0, window.scrollY - 10) : window.scrollY;
+      const navScrollY = Math.max(0, window.scrollY - 10);
       setScrollProgress(max > 0 ? window.scrollY / max : 0);
       setNavMerge(Math.min(1, Math.max(0, navScrollY / 150)));
       updateFooterRevealState();
@@ -1134,7 +1134,7 @@ function App() {
     .join(" ");
   const navClassName = [
     "nav",
-    isHome && navMerge <= 0.001 ? "nav-home-top" : "",
+    navMerge <= 0.001 ? "nav-clear-top" : "",
     navMerge > 0.98 ? "nav-merged" : ""
   ]
     .filter(Boolean)

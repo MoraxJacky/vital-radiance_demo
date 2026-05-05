@@ -8349,7 +8349,7 @@ body::-webkit-scrollbar,
     transition: opacity 320ms var(--motion-ease);
   }
 
-  .home-route .nav.nav-home-top::before {
+  .nav.nav-clear-top::before {
     border-bottom-color: transparent;
     background: transparent;
     opacity: 0;
@@ -18057,6 +18057,221 @@ body {
 
   .financial-investor-panel .primary-cta {
     max-width: 112px;
+  }
+}
+
+/* Financial readability repair: long financial tables stay native tables with horizontal scroll. */
+.business-financial :is(
+  .financial-kpi-section,
+  .financial-assumptions-section,
+  .financial-investment-section,
+  .financial-cost-section,
+  .financial-monthly-section,
+  .financial-yearly-section,
+  .financial-break-even-section,
+  .financial-sensitivity-section
+) {
+  height: auto !important;
+  min-height: calc(100svh - var(--nav-height));
+  overflow: visible !important;
+}
+
+.business-financial .financial-table-pane {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.business-financial .financial-table-pane > .financial-list-table,
+.business-financial .financial-monthly-section > .financial-list-table,
+.business-financial .financial-sensitivity-section > .financial-list-table,
+.business-financial .financial-list-table {
+  display: block !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  padding: clamp(14px, 1.8vw, 22px) !important;
+}
+
+.business-financial .financial-list-table table {
+  display: table !important;
+  width: 100% !important;
+  min-width: 720px !important;
+  max-width: none !important;
+  height: auto !important;
+  border-collapse: separate !important;
+  border-spacing: 0 9px !important;
+}
+
+.business-financial .financial-projection-table table {
+  min-width: 980px !important;
+}
+
+.business-financial .financial-yearly-table table,
+.business-financial .financial-sensitivity-table table {
+  min-width: 900px !important;
+}
+
+.business-financial .financial-list-table thead {
+  display: table-header-group !important;
+}
+
+.business-financial .financial-list-table tbody {
+  display: table-row-group !important;
+}
+
+.business-financial .financial-list-table tr,
+.business-route.business-financial .financial-list-table tr {
+  display: table-row !important;
+  height: auto !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  transform: none !important;
+}
+
+.business-financial .financial-list-table tbody tr::after {
+  content: none !important;
+  display: none !important;
+}
+
+.business-financial .financial-list-table th,
+.business-financial .financial-list-table td {
+  display: table-cell !important;
+  width: auto !important;
+  min-width: 0 !important;
+  padding: 12px 15px !important;
+  overflow: visible !important;
+  border-bottom: 0 !important;
+  background: rgba(5, 14, 21, 0.58) !important;
+  color: #dcebf1;
+  font-size: clamp(12px, 0.82vw, 14px) !important;
+  line-height: 1.42 !important;
+  white-space: normal !important;
+  text-overflow: clip !important;
+}
+
+.business-financial .financial-list-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  color: #b9f2ff !important;
+  font-weight: 900;
+  background: rgba(5, 14, 21, 0.86) !important;
+}
+
+.business-financial .financial-list-table tbody th {
+  color: #f0d795 !important;
+  font-weight: 850;
+}
+
+.business-financial .financial-list-table tbody th::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 8px;
+  height: 8px;
+  margin-right: 9px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 16px rgba(105, 215, 255, 0.68);
+  vertical-align: 1px;
+}
+
+.business-financial .financial-list-table .table-cell-copy,
+.business-financial .financial-list-table tbody .table-cell-copy,
+.business-financial .financial-list-table tbody th .table-cell-copy,
+.business-financial .financial-list-table tbody td .table-cell-copy {
+  display: inline !important;
+  overflow: visible !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: initial !important;
+  white-space: normal !important;
+  text-overflow: clip !important;
+}
+
+.business-financial .financial-list-table tbody th .table-cell-copy::before {
+  content: none !important;
+  display: none !important;
+}
+
+.business-financial .financial-list-table tbody tr:hover th,
+.business-financial .financial-list-table tbody tr:hover td {
+  background: rgba(10, 32, 43, 0.74) !important;
+}
+
+.business-financial .financial-list-table tbody tr:last-child th,
+.business-financial .financial-list-table tbody tr:last-child td {
+  background:
+    linear-gradient(135deg, rgba(105, 215, 255, 0.16), rgba(233, 201, 133, 0.1)),
+    rgba(5, 14, 21, 0.66) !important;
+}
+
+.business-financial .financial-chart,
+.business-financial .five-year-motion,
+.business-financial .break-even-visual {
+  height: auto !important;
+  max-height: none !important;
+  min-height: clamp(440px, 56svh, 640px);
+  overflow: hidden;
+}
+
+.business-financial .financial-chart .bar-chart {
+  height: min(320px, 42svh) !important;
+  min-height: 250px;
+  overflow: visible;
+}
+
+.business-financial .five-year-stage {
+  min-height: min(340px, 44svh);
+  overflow: visible;
+}
+
+@media (max-width: 720px) {
+  .business-financial :is(
+    .financial-kpi-section,
+    .financial-assumptions-section,
+    .financial-investment-section,
+    .financial-cost-section,
+    .financial-monthly-section,
+    .financial-yearly-section,
+    .financial-break-even-section,
+    .financial-sensitivity-section
+  ) {
+    height: auto !important;
+    min-height: calc(100svh - var(--nav-height));
+    overflow: visible !important;
+  }
+
+  .business-financial .financial-list-table table {
+    min-width: 760px !important;
+  }
+
+  .business-financial .financial-projection-table table {
+    min-width: 980px !important;
+  }
+
+  .business-financial .financial-chart,
+  .business-financial .five-year-motion,
+  .business-financial .break-even-visual {
+    min-height: 430px;
+  }
+
+  .business-financial .financial-chart {
+    min-height: 650px;
+  }
+
+  .business-financial .five-year-motion {
+    min-height: 540px;
+  }
+
+  .business-financial .financial-chart .bar-chart {
+    height: 260px !important;
+    min-height: 240px;
   }
 }
 

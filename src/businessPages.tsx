@@ -1282,6 +1282,78 @@ const businessPageCopy = {
   }
 } as const;
 
+const financialStoryCopy = {
+  en: {
+    kpiStory: {
+      alt: "Vital Radiance branded financial KPI scene with abstract glass panels",
+      title: "Finance still belongs to the product",
+      body:
+        "The model summary keeps the commercial object visible, so the numbers feel connected to launch readiness rather than isolated cards.",
+      stats: [
+        ["Payback", "11.8 months"],
+        ["ROI", "104.6%"]
+      ]
+    },
+    investmentStory: {
+      alt: "Vital Radiance branded production capability scene for launch investment readiness",
+      title: "Where the launch budget becomes capability",
+      body:
+        "The investment table is paired with quality, documentation and facility readiness cues to reduce the spreadsheet-heavy feel.",
+      stats: [
+        ["Initial", "CNY 20m"],
+        ["Use case", "Launch readiness"]
+      ]
+    },
+    breakEvenVisual: {
+      alt: "Vital Radiance bundle pricing display for break-even model",
+      meterAria: "Payback period 11.8 months",
+      paybackValue: "11.8",
+      paybackLabel: "months payback",
+      title: "Investor Reading",
+      body:
+        "The model reaches cumulative positive cash near the end of Year 1, with ROI driven by contribution margin and planned volume ramp.",
+      stats: [
+        ["Year 1 ROI", "104.6%"],
+        ["bottles / month", "4,321"]
+      ]
+    },
+    cta: ["Have investor or partnership questions?", "#/contact", "Contact Investor Relations"]
+  },
+  zh: {
+    kpiStory: {
+      alt: "Vital Radiance 品牌财务 KPI 场景，带有抽象玻璃面板",
+      title: "财务仍然服务于产品",
+      body: "模型摘要保留产品与商业对象，让数字和上市准备度保持连接，而不是孤立的财务卡片。",
+      stats: [
+        ["回本周期", "11.8 个月"],
+        ["ROI", "104.6%"]
+      ]
+    },
+    investmentStory: {
+      alt: "Vital Radiance 品牌生产能力场景，用于上市投资准备",
+      title: "上市预算如何转化为能力",
+      body: "初始投资表与质量、文件和厂房准备度放在一起阅读，避免页面只剩下密集表格。",
+      stats: [
+        ["初始投资", "CNY 20m"],
+        ["用途", "上市准备"]
+      ]
+    },
+    breakEvenVisual: {
+      alt: "Vital Radiance 组合定价展示，用于盈亏平衡模型",
+      meterAria: "回本周期 11.8 个月",
+      paybackValue: "11.8",
+      paybackLabel: "个月回本",
+      title: "投资者阅读",
+      body: "模型在第 1 年末附近累计转正，ROI 主要由贡献毛利和规划销量爬坡驱动。",
+      stats: [
+        ["第 1 年 ROI", "104.6%"],
+        ["瓶 / 月", "4,321"]
+      ]
+    },
+    cta: ["有投资或合作问题？", "#/contact", "联系投资者关系"]
+  }
+} as const;
+
 function getLocalizedPlan(lang: Lang) {
   return localizedBusinessPlan[lang];
 }
@@ -1975,6 +2047,7 @@ function FinancialPlanPage({ lang }: { lang: Lang }) {
   const copy = businessPageCopy[lang].financial;
   const plan = getLocalizedPlan(lang);
   const common = businessPageCopy[lang].common;
+  const story = financialStoryCopy[lang];
 
   return (
     <>
@@ -1987,112 +2060,126 @@ function FinancialPlanPage({ lang }: { lang: Lang }) {
         imageAlt={copy.hero.imageAlt}
         actions={copy.hero.actions}
       />
-      <section className="business-section financial-dashboard-section">
-        <SectionHeader eyebrow={copy.dashboardHeader[0]} title={copy.dashboardHeader[1]} />
-        <div className="financial-dashboard-layout">
-          <div className="financial-dashboard-kpis">
-            <KPIGrid items={plan.snapshotKpis} />
-            <p className="table-note">{plan.financial.disclaimer}</p>
-          </div>
-          <div className="financial-table-pane">
-            <FinancialPaneHeading eyebrow={copy.assumptionsPane[0]} title={copy.assumptionsPane[1]} />
-            <ResponsiveTable
-              caption={copy.assumptionsCaption}
-              className="financial-list-table financial-assumptions-table"
-              headers={copy.assumptionsHeaders}
-              note={common.mobileNote}
-              rows={plan.financial.assumptions}
-            />
-          </div>
-          <FinancialChart lang={lang} />
+      <section className="business-section two-column visual-led financial-kpi-section">
+        <div>
+          <SectionHeader eyebrow={copy.dashboardHeader[0]} title={copy.dashboardHeader[1]} />
+          <KPIGrid items={plan.snapshotKpis} />
+          <p className="table-note">{plan.financial.disclaimer}</p>
         </div>
+        <ImageStoryPanel
+          image={assets.businessFinancialKpi}
+          alt={story.kpiStory.alt}
+          title={story.kpiStory.title}
+          body={story.kpiStory.body}
+          stats={story.kpiStory.stats}
+        />
       </section>
-      <section className="business-section financial-operations-section">
-        <SectionHeader eyebrow={copy.operationsHeader[0]} title={copy.operationsHeader[1]} />
-        <div className="financial-operations-grid">
-          <div className="financial-table-pane financial-investment-pane">
-            <FinancialPaneHeading eyebrow={copy.investmentPane[0]} title={copy.investmentPane[1]} />
-            <ResponsiveTable
-              caption={copy.investmentCaption}
-              className="financial-list-table financial-investment-table"
-              headers={copy.investmentHeaders}
-              note={common.mobileNote}
-              rows={plan.financial.initialInvestment}
-            />
-          </div>
-          <div className="financial-table-pane">
-            <FinancialPaneHeading eyebrow={copy.variablePane[0]} title={copy.variablePane[1]} />
-            <ResponsiveTable
-              caption={copy.variableCaption}
-              className="financial-list-table financial-cost-table"
-              headers={copy.variableHeaders}
-              note={common.mobileNote}
-              rows={plan.financial.variableCosts}
-            />
-          </div>
-          <div className="financial-table-pane">
-            <FinancialPaneHeading eyebrow={copy.fixedPane[0]} title={copy.fixedPane[1]} />
-            <ResponsiveTable
-              caption={copy.fixedCaption}
-              className="financial-list-table financial-cost-table"
-              headers={copy.fixedHeaders}
-              note={common.mobileNote}
-              rows={plan.financial.fixedCosts}
-            />
-          </div>
-        </div>
-      </section>
-      <section className="business-section financial-projections-section" id="monthly-projection">
-        <SectionHeader eyebrow={copy.projectionHeader[0]} title={copy.projectionHeader[1]} />
-        <div className="financial-projections-grid">
-          <div className="financial-table-pane financial-monthly-pane">
-            <FinancialPaneHeading eyebrow={copy.monthlyPane[0]} title={copy.monthlyPane[1]} />
-            <ResponsiveTable
-              caption={copy.monthlyCaption}
-              className="financial-list-table financial-projection-table financial-monthly-table"
-              note={common.mobileNote}
-              headers={copy.monthlyHeaders}
-              rows={plan.financial.monthlyProjection}
-            />
-          </div>
-          <div className="financial-table-pane financial-yearly-table-pane">
-            <FinancialPaneHeading eyebrow={copy.yearlyPane[0]} title={copy.yearlyPane[1]} />
-            <ResponsiveTable
-              caption={copy.yearlyCaption}
-              className="financial-list-table financial-projection-table financial-yearly-table"
-              note={common.mobileNote}
-              headers={copy.yearlyHeaders}
-              rows={plan.financial.yearlyProjection}
-            />
-          </div>
-          <FiveYearMotionChart lang={lang} />
-        </div>
-      </section>
-      <section className="business-section financial-sensitivity-section financial-risk-section" id="sensitivity">
-        <SectionHeader eyebrow={copy.sensitivityHeader[0]} title={copy.sensitivityHeader[1]} />
-        <div className="financial-risk-layout">
+      <section className="business-section two-column financial-assumptions-section">
+        <div className="financial-table-pane">
+          <SectionHeader eyebrow={copy.assumptionsPane[0]} title={copy.assumptionsPane[1]} />
           <ResponsiveTable
-            caption={copy.sensitivityCaption}
-            className="financial-list-table financial-sensitivity-table"
-            headers={copy.sensitivityHeaders}
+            caption={copy.assumptionsCaption}
+            className="financial-list-table financial-assumptions-table"
+            headers={copy.assumptionsHeaders}
             note={common.mobileNote}
-            rows={plan.financial.sensitivity}
+            rows={plan.financial.assumptions}
           />
-          <div className="financial-risk-side">
-            <div className="financial-table-pane">
-              <FinancialPaneHeading eyebrow={copy.breakEvenPane[0]} title={copy.breakEvenPane[1]} />
-              <ResponsiveTable
-                caption={copy.breakEvenCaption}
-                className="financial-list-table financial-break-even-table"
-                headers={copy.breakEvenHeaders}
-                note={common.mobileNote}
-                rows={plan.financial.breakEven}
-              />
-            </div>
-            <FinancialInvestorPanel lang={lang} />
-          </div>
+        </div>
+        <FinancialChart lang={lang} />
+      </section>
+      <section className="business-section two-column visual-led financial-investment-section">
+        <div className="financial-table-pane">
+          <SectionHeader eyebrow={copy.investmentPane[0]} title={copy.investmentPane[1]} />
+          <ResponsiveTable
+            caption={copy.investmentCaption}
+            className="financial-list-table financial-investment-table"
+            headers={copy.investmentHeaders}
+            note={common.mobileNote}
+            rows={plan.financial.initialInvestment}
+          />
+        </div>
+        <ImageStoryPanel
+          image={assets.businessManufacturing}
+          alt={story.investmentStory.alt}
+          title={story.investmentStory.title}
+          body={story.investmentStory.body}
+          stats={story.investmentStory.stats}
+        />
+      </section>
+      <section className="business-section two-column financial-cost-section">
+        <div className="financial-table-pane">
+          <SectionHeader eyebrow={copy.variablePane[0]} title={copy.variablePane[1]} />
+          <ResponsiveTable
+            caption={copy.variableCaption}
+            className="financial-list-table financial-cost-table"
+            headers={copy.variableHeaders}
+            note={common.mobileNote}
+            rows={plan.financial.variableCosts}
+          />
+        </div>
+        <div className="financial-table-pane">
+          <SectionHeader eyebrow={copy.fixedPane[0]} title={copy.fixedPane[1]} />
+          <ResponsiveTable
+            caption={copy.fixedCaption}
+            className="financial-list-table financial-cost-table"
+            headers={copy.fixedHeaders}
+            note={common.mobileNote}
+            rows={plan.financial.fixedCosts}
+          />
         </div>
       </section>
+      <section className="business-section financial-monthly-section" id="monthly-projection">
+        <SectionHeader eyebrow={copy.monthlyPane[0]} title={copy.monthlyPane[1]} />
+        <ResponsiveTable
+          caption={copy.monthlyCaption}
+          className="financial-list-table financial-projection-table financial-monthly-table"
+          note={common.mobileNote}
+          headers={copy.monthlyHeaders}
+          rows={plan.financial.monthlyProjection}
+        />
+      </section>
+      <section className="business-section two-column financial-yearly-section">
+        <div className="financial-table-pane financial-yearly-table-pane">
+          <SectionHeader eyebrow={copy.yearlyPane[0]} title={copy.yearlyPane[1]} />
+          <ResponsiveTable
+            caption={copy.yearlyCaption}
+            className="financial-list-table financial-projection-table financial-yearly-table"
+            note={common.mobileNote}
+            headers={copy.yearlyHeaders}
+            rows={plan.financial.yearlyProjection}
+          />
+        </div>
+        <FiveYearMotionChart lang={lang} />
+      </section>
+      <section className="business-section two-column visual-led financial-break-even-section">
+        <div className="financial-table-pane">
+          <SectionHeader eyebrow={copy.breakEvenPane[0]} title={copy.breakEvenPane[1]} />
+          <ResponsiveTable
+            caption={copy.breakEvenCaption}
+            className="financial-list-table financial-break-even-table"
+            headers={copy.breakEvenHeaders}
+            note={common.mobileNote}
+            rows={plan.financial.breakEven}
+          />
+        </div>
+        <BreakEvenVisual lang={lang} />
+      </section>
+      <section className="business-section financial-sensitivity-section" id="sensitivity">
+        <SectionHeader eyebrow={copy.sensitivityHeader[0]} title={copy.sensitivityHeader[1]} />
+        <ResponsiveTable
+          caption={copy.sensitivityCaption}
+          className="financial-list-table financial-sensitivity-table"
+          headers={copy.sensitivityHeaders}
+          note={common.mobileNote}
+          rows={plan.financial.sensitivity}
+        />
+      </section>
+      <PageCTA
+        className="financial-final-cta"
+        title={story.cta[0]}
+        href={story.cta[1]}
+        label={story.cta[2]}
+      />
     </>
   );
 }
@@ -2988,7 +3075,7 @@ function FinancialChart({ lang }: { lang: Lang }) {
           const profit = Number(row[5]);
           return (
             <div className="bar-column" key={row[0]} style={{ "--motion-index": index } as React.CSSProperties}>
-              <i style={{ "--bar-height": `${Math.max(42, (profit / maxProfit) * 170)}px` } as React.CSSProperties} />
+              <i style={{ "--bar-height": `${Math.max(42, (profit / maxProfit) * 250)}px` } as React.CSSProperties} />
               <strong>{row[5]}</strong>
               <span>{copy.shortYears[index]}</span>
             </div>
@@ -3058,19 +3145,21 @@ function FiveYearMotionChart({ lang }: { lang: Lang }) {
   );
 }
 
-function BreakEvenVisual() {
+function BreakEvenVisual({ lang }: { lang: Lang }) {
+  const copy = financialStoryCopy[lang].breakEvenVisual;
+
   return (
     <figure className="break-even-visual">
       <div className="break-even-image-frame">
-        <img loading="lazy" src={assets.pricing} alt="Vital Radiance bundle pricing display for break-even model" />
+        <img loading="lazy" src={assets.pricing} alt={copy.alt} />
         <div className="break-even-orbit" aria-hidden="true">
           <span />
           <span />
           <i />
         </div>
-        <div className="payback-meter" aria-label="Payback period 11.8 months">
-          <strong>11.8</strong>
-          <span>months payback</span>
+        <div className="payback-meter" aria-label={copy.meterAria}>
+          <strong>{copy.paybackValue}</strong>
+          <span>{copy.paybackLabel}</span>
         </div>
         <div className="roi-spark" aria-hidden="true">
           <i />
@@ -3079,17 +3168,15 @@ function BreakEvenVisual() {
         </div>
       </div>
       <figcaption>
-        <h3>Investor Reading</h3>
-        <p>The model reaches cumulative positive cash near the end of Year 1, with ROI driven by contribution margin and planned volume ramp.</p>
+        <h3>{copy.title}</h3>
+        <p>{copy.body}</p>
         <div className="image-story-stats">
-          <span>
-            <b>104.6%</b>
-            Year 1 ROI
-          </span>
-          <span>
-            <b>4,321</b>
-            bottles / month
-          </span>
+          {copy.stats.map(([label, value]) => (
+            <span key={label}>
+              <b>{value}</b>
+              {label}
+            </span>
+          ))}
         </div>
       </figcaption>
     </figure>
