@@ -2,6 +2,8 @@ node_modules/
 dist/
 tmp/
 deliverables/
+hyperframes/
+vital-radiance-assets/
 .codex_pdf_assets/
 
 *.log

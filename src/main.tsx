@@ -259,6 +259,12 @@ const FAQ_FRAME_PATH =
   "M 50 2 H 90 Q 98 2 98 10 V 90 Q 98 98 90 98 H 10 Q 2 98 2 90 V 10 Q 2 2 10 2 H 50 Z";
 const FAQ_FRAME_FALLBACK_LENGTH = 2400;
 const FAQ_FRAME_SAMPLE_COUNT = 240;
+const HOME_HASH = "#/";
+
+function resetInitialLoadToHome() {
+  if (window.location.hash === HOME_HASH) return;
+  window.history.replaceState(window.history.state, "", `${window.location.pathname}${window.location.search}${HOME_HASH}`);
+}
 
 function routeFromHash(): BusinessRoutePath {
   const hash = window.location.hash;
@@ -278,7 +284,7 @@ function App() {
   const [route, setRoute] = useState<BusinessRoutePath>(() => routeFromHash());
   const [introVisible, setIntroVisible] = useState(() => {
     if (typeof window === "undefined") return false;
-    return routeFromHash() === "/" && (window.location.hash === "" || window.location.hash === "#overview");
+    return routeFromHash() === "/" && window.location.hash === HOME_HASH;
   });
   const [lang, setLang] = useState<Lang>("en");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -1489,6 +1495,7 @@ function Spec({ icon, label, value }: { icon: React.ReactNode; label: string; va
 }
 
 const rootElement = document.getElementById("root")! as RootElement;
+resetInitialLoadToHome();
 const root = window.__vitalRadianceRoot ?? rootElement.__vitalRadianceRoot ?? createRoot(rootElement);
 rootElement.__vitalRadianceRoot = root;
 window.__vitalRadianceRoot = root;
