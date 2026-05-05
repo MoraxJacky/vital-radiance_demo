@@ -1,0 +1,24 @@
+node_modules/
+dist/
+tmp/
+deliverables/
+.codex_pdf_assets/
+
+*.log
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+
+.DS_Store
+Thumbs.db
+
+# Local QA screenshots and generated review artifacts.
+qa-*.png
+audit-*.png
+motion-*.png
+airy*.png
+align-fix*.png
+glow-*.png
+vital-radiance-desktop*.png
+.tmp-*.png
+.nanfu*
