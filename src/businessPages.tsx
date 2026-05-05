@@ -83,29 +83,54 @@ const productFormulaIcons = [
   <ClipboardCheck />
 ] as const;
 
-const productStructureCards = [
-  {
-    icon: <Tablets />,
-    title: "Softgel Experience",
-    metric: "Premium format",
-    body: "Amber softgels support a polished daily routine with clear dose control and a premium skin-nutrition feel.",
-    points: ["Easy daily handling", "Oil-compatible fill system"]
-  },
-  {
-    icon: <Workflow />,
-    title: "Routine Logic",
-    metric: "2 capsules / day",
-    body: "A 60-count bottle maps cleanly to a 30-day repeat cycle for replenishment, subscription timing and education.",
-    points: ["60 softgels per bottle", "30-day repeat cycle"]
-  },
-  {
-    icon: <ShieldAlert />,
-    title: "Safety Boundary",
-    metric: "Support claims only",
-    body: "Claims stay within hydration, elasticity and antioxidant support language, with clear ingredient-review reminders.",
-    points: ["No medicinal promise", "Clear caution guidance"]
-  }
-] as const;
+const productStructureCards = {
+  en: [
+    {
+      icon: <Tablets />,
+      title: "Softgel Experience",
+      metric: "Premium format",
+      body: "Amber softgels support a polished daily routine with clear dose control and a premium skin-nutrition feel.",
+      points: ["Easy daily handling", "Oil-compatible fill system"]
+    },
+    {
+      icon: <Workflow />,
+      title: "Routine Logic",
+      metric: "2 capsules / day",
+      body: "A 60-count bottle maps cleanly to a 30-day repeat cycle for replenishment, subscription timing and education.",
+      points: ["60 softgels per bottle", "30-day repeat cycle"]
+    },
+    {
+      icon: <ShieldAlert />,
+      title: "Safety Boundary",
+      metric: "Support claims only",
+      body: "Claims stay within hydration, elasticity and antioxidant support language, with clear ingredient-review reminders.",
+      points: ["No medicinal promise", "Clear caution guidance"]
+    }
+  ],
+  zh: [
+    {
+      icon: <Tablets />,
+      title: "软胶囊体验",
+      metric: "高端剂型",
+      body: "琥珀色软胶囊便于日常使用，剂量清晰，也更贴近高端肌肤营养定位。",
+      points: ["日常拿取方便", "适合油相填充体系"]
+    },
+    {
+      icon: <Workflow />,
+      title: "周期逻辑",
+      metric: "每日 2 粒",
+      body: "60 粒装自然对应 30 天补充周期，便于复购、订阅和使用教育。",
+      points: ["每瓶 60 粒", "30 天复购周期"]
+    },
+    {
+      icon: <ShieldAlert />,
+      title: "安全边界",
+      metric: "仅支持型宣称",
+      body: "文案聚焦水润、弹性与抗氧化支持，并保留清晰的成分查看提醒。",
+      points: ["不做医疗承诺", "明确注意事项"]
+    }
+  ]
+} as const;
 
 const productServiceIcons = [
   <BookOpenCheck />,
@@ -116,23 +141,36 @@ const productServiceIcons = [
   <Clock3 />
 ] as const;
 
-const productServiceSignals = [
-  "Dosage, storage and routine",
-  "Batch code and release trail",
-  "Replacement review path",
-  "Pause, adjust or cancel",
-  "Ingredient caution boundary",
-  "48h business-day target"
-] as const;
+const productServiceSignals = {
+  en: [
+    "Dosage, storage and routine",
+    "Batch code and release trail",
+    "Replacement review path",
+    "Pause, adjust or cancel",
+    "Ingredient caution boundary",
+    "48h business-day target"
+  ],
+  zh: ["用量、储存与习惯", "批次码与放行记录", "换货审核路径", "暂停、调整或取消", "成分注意边界", "48 小时工作日目标"]
+} as const;
 
-const productServiceBriefs = [
-  "Dose, storage and daily routine guidance after purchase.",
-  "Batch code links each bottle to quality tracking and release records.",
-  "Replacement review path when a package arrives damaged or leaking.",
-  "Subscription customers can adjust timing before the next billing cycle.",
-  "Ingredient-source reminders for allergy, pregnancy and medical-treatment cases.",
-  "Customer service targets a response within 48 hours on business days."
-] as const;
+const productServiceBriefs = {
+  en: [
+    "Dose, storage and daily routine guidance after purchase.",
+    "Batch code links each bottle to quality tracking and release records.",
+    "Replacement review path when a package arrives damaged or leaking.",
+    "Subscription customers can adjust timing before the next billing cycle.",
+    "Ingredient-source reminders for allergy, pregnancy and medical-treatment cases.",
+    "Customer service targets a response within 48 hours on business days."
+  ],
+  zh: [
+    "购买后提供用量、储存和日常使用建议。",
+    "每瓶批次码可关联质量追踪与放行记录。",
+    "包装破损或渗漏时可进入换货审核。",
+    "订阅客户可在下个计费周期前调整。",
+    "过敏、孕期、哺乳期或治疗中人群需先查看成分。",
+    "客服目标为工作日 48 小时内响应。"
+  ]
+} as const;
 
 const contactSalesIcons = [
   <Pill />,
@@ -146,73 +184,103 @@ const contactSalesIcons = [
 const manufacturingSequenceVisuals = [
   {
     icon: <PackageSearch />,
-    label: "Material gate",
+    label: { en: "Material gate", zh: "原料关口" },
     image: assets.manufacturingSteps[0],
     kind: "raw",
-    body: "COA, appearance and storage status are checked before materials move to dispensing."
+    body: {
+      en: "COA, appearance and storage status are checked before materials move to dispensing.",
+      zh: "进入称量前检查 COA、外观和储存状态。"
+    }
   },
   {
     icon: <ClipboardCheck />,
-    label: "Dose control",
+    label: { en: "Dose control", zh: "剂量控制" },
     image: assets.manufacturingSteps[2],
     kind: "weigh",
-    body: "Each ingredient is weighed against the batch sheet before being released to mixing."
+    body: {
+      en: "Each ingredient is weighed against the batch sheet before being released to mixing.",
+      zh: "每种成分按批记录称量后再放行至混合。"
+    }
   },
   {
     icon: <Workflow />,
-    label: "Fill blend",
+    label: { en: "Fill blend", zh: "填充混合" },
     image: assets.manufacturingSteps[3],
     kind: "mix",
-    body: "Actives, carrier oil and excipients are blended into a uniform softgel fill."
+    body: {
+      en: "Actives, carrier oil and excipients are blended into a uniform softgel fill.",
+      zh: "活性成分、载体油和辅料混合成均一填充液。"
+    }
   },
   {
     icon: <DropletMark />,
-    label: "Air removal",
+    label: { en: "Air removal", zh: "脱气" },
     image: assets.manufacturing,
     kind: "deaerate",
-    body: "Vacuum treatment removes entrained air so fill weight and capsule sealing stay stable."
+    body: {
+      en: "Vacuum treatment removes entrained air so fill weight and capsule sealing stay stable.",
+      zh: "真空处理减少夹带空气，帮助稳定填充量和封合。"
+    }
   },
   {
     icon: <Factory />,
-    label: "Capsule forming",
+    label: { en: "Capsule forming", zh: "胶囊成型" },
     image: assets.manufacturingSteps[4],
     kind: "encapsulate",
-    body: "Gelatin ribbons are formed, filled and sealed into fresh amber softgels."
+    body: {
+      en: "Gelatin ribbons are formed, filled and sealed into fresh amber softgels.",
+      zh: "胶皮成型、填充并封合为新鲜琥珀软胶囊。"
+    }
   },
   {
     icon: <Clock3 />,
-    label: "Initial drying",
+    label: { en: "Initial drying", zh: "初步干燥" },
     image: assets.manufacturingSteps[5],
     kind: "tumble",
-    body: "Tumble drying removes surface moisture and protects capsule shape."
+    body: {
+      en: "Tumble drying removes surface moisture and protects capsule shape.",
+      zh: "滚笼干燥去除表面水分，保护胶囊形态。"
+    }
   },
   {
     icon: <CalendarSync />,
-    label: "Curing room",
+    label: { en: "Curing room", zh: "固化室" },
     image: assets.businessManufacturing,
     kind: "cure",
-    body: "Tray drying completes curing under controlled time, airflow and humidity."
+    body: {
+      en: "Tray drying completes curing under controlled time, airflow and humidity.",
+      zh: "托盘干燥在受控时间、气流和湿度下完成固化。"
+    }
   },
   {
     icon: <Microscope />,
-    label: "Visual sorting",
+    label: { en: "Visual sorting", zh: "外观分选" },
     image: assets.manufacturingSteps[6],
     kind: "inspect",
-    body: "Operators remove leaking, misshapen or underfilled capsules before packaging."
+    body: {
+      en: "Operators remove leaking, misshapen or underfilled capsules before packaging.",
+      zh: "包装前剔除渗漏、变形或填充不足的胶囊。"
+    }
   },
   {
     icon: <PackageCheck />,
-    label: "Bottle line",
+    label: { en: "Bottle line", zh: "瓶装线" },
     image: assets.manufacturingSteps[7],
     kind: "bottle",
-    body: "Counting, filling, capping and sealing convert released bulk into primary packs."
+    body: {
+      en: "Counting, filling, capping and sealing convert released bulk into primary packs.",
+      zh: "计数、灌装、旋盖和封口形成初级包装。"
+    }
   },
   {
     icon: <Truck />,
-    label: "Goods release",
+    label: { en: "Goods release", zh: "成品放行" },
     image: assets.businessManufacturingCapacity,
     kind: "label",
-    body: "Labels, cartons and storage status close the finished-goods release trail."
+    body: {
+      en: "Labels, cartons and storage status close the finished-goods release trail.",
+      zh: "标签、纸盒和储存状态完成成品放行链路。"
+    }
   }
 ] as const;
 
@@ -229,51 +297,79 @@ const manufacturingEquipmentIcons = [
   <Truck />
 ] as const;
 
-const semiFinishedStates = [
-  ["Prepared fill mass", "Mixed and deaerated active-oil fill waiting for encapsulation."],
-  ["Wet softgels", "Fresh capsules after sealing, before the first tumble-drying pass."],
-  ["Partially dried softgels", "Capsules transferred from tumble dryer to controlled tray curing."],
-  ["Released bulk softgels", "Inspected and sorted capsules cleared for bottle counting."],
-  ["Sealed bottle units", "Counted, capped and labeled bottles waiting for carton release."],
-  ["Carton-ready lots", "Released bottles grouped for labeling, carton packing and finished-goods storage."]
-] as const;
+const semiFinishedStates = {
+  en: [
+    ["Prepared fill mass", "Mixed and deaerated active-oil fill waiting for encapsulation."],
+    ["Wet softgels", "Fresh capsules after sealing, before the first tumble-drying pass."],
+    ["Partially dried softgels", "Capsules transferred from tumble dryer to controlled tray curing."],
+    ["Released bulk softgels", "Inspected and sorted capsules cleared for bottle counting."],
+    ["Sealed bottle units", "Counted, capped and labeled bottles waiting for carton release."],
+    ["Carton-ready lots", "Released bottles grouped for labeling, carton packing and finished-goods storage."]
+  ],
+  zh: [
+    ["已制备填充液", "完成混合与脱气，等待进入软胶囊成型。"],
+    ["湿软胶囊", "刚封合的新鲜胶囊，尚未进入首次滚笼干燥。"],
+    ["半干软胶囊", "从滚笼干燥转入受控托盘固化的胶囊。"],
+    ["放行散粒", "完成检验分选，可进入瓶装计数。"],
+    ["密封瓶装单元", "已计数、旋盖和贴标，等待纸盒放行。"],
+    ["待装盒批次", "放行瓶装产品分组进入贴标、装盒和成品储存。"]
+  ]
+} as const;
 
 const manufacturingQualityVisuals = [
   {
     icon: <PackageSearch />,
     image: assets.manufacturingSteps[1],
     kind: "material",
-    body: "Supplier documents, appearance, identity and storage condition are checked before use."
+    body: {
+      en: "Supplier documents, appearance, identity and storage condition are checked before use.",
+      zh: "使用前核查供应商文件、外观、身份和储存条件。"
+    }
   },
   {
     icon: <ScanBarcode />,
     image: assets.businessManufacturingCapacity,
     kind: "barcode",
-    body: "Batch number links materials, production records, QC checks and finished bottles."
+    body: {
+      en: "Batch number links materials, production records, QC checks and finished bottles.",
+      zh: "批号连接原料、生产记录、质检结果和成品瓶。"
+    }
   },
   {
     icon: <ClipboardCheck />,
     image: assets.manufacturingSteps[3],
     kind: "mass",
-    body: "Fill preparation and encapsulation records track target weight and uniformity."
+    body: {
+      en: "Fill preparation and encapsulation records track target weight and uniformity.",
+      zh: "填充制备与成型记录追踪目标重量和均一性。"
+    }
   },
   {
     icon: <Clock3 />,
     image: assets.manufacturingSteps[5],
     kind: "drying",
-    body: "Drying time, room condition and capsule handling are monitored before bulk release."
+    body: {
+      en: "Drying time, room condition and capsule handling are monitored before bulk release.",
+      zh: "散粒放行前监控干燥时间、环境和胶囊处理。"
+    }
   },
   {
     icon: <Eye />,
     image: assets.manufacturingSteps[6],
     kind: "visual",
-    body: "Sorting removes visible defects, leakage and capsule shape failures before bottling."
+    body: {
+      en: "Sorting removes visible defects, leakage and capsule shape failures before bottling.",
+      zh: "瓶装前通过分选剔除可见缺陷、渗漏和形态异常。"
+    }
   },
   {
     icon: <PackageCheck />,
     image: assets.manufacturingSteps[7],
     kind: "release",
-    body: "Bottle count, seal integrity, label status and carton readiness are checked together."
+    body: {
+      en: "Bottle count, seal integrity, label status and carton readiness are checked together.",
+      zh: "同步检查瓶装数量、密封完整性、标签和装盒状态。"
+    }
   }
 ] as const;
 
@@ -285,48 +381,949 @@ const companyValueVisuals: readonly { icon: React.ReactNode; kind: ValueMotionKi
   { icon: <HeartHandshake />, kind: "trust" }
 ];
 
+const zhBusinessPlan = {
+  snapshotKpis: [
+    { label: "规划产能", value: "500,000", detail: "瓶 / 年" },
+    { label: "盈亏平衡销量", value: "4,321", detail: "瓶 / 月" },
+    { label: "回本周期", value: "11.8", detail: "个月" },
+    { label: "第 1 年 ROI", value: "104.6%", detail: "课程模型" }
+  ],
+  company: {
+    intro:
+      "Vital Glow Biosciences 专注高端、有依据的内在美容软胶囊营养产品，核心产品 Vital Radiance 聚焦水润、弹性与抗氧化支持。",
+    mission: "通过安全、科学导向、自然灵感的营养产品，帮助消费者管理肌肤与活力。",
+    vision: "成为内在美容市场值得信赖的高端营养品牌，以透明配方、负责采购和稳定品质建立口碑。",
+    values: [
+      ["科学诚信", "每个产品都由有依据的成分逻辑驱动。"],
+      ["安全优先", "每个批次都配套质量检查、追溯和清晰使用提醒。"],
+      ["透明沟通", "清楚说明成分、用量、储存和来源信息。"],
+      ["可持续", "在可行范围内优先考虑负责采购与包装选择。"],
+      ["消费者信任", "通过教育、支持和真实宣称建立长期信任。"]
+    ],
+    team: [
+      ["总经理 / 战略负责人", "SUN Yongzhe", "业务战略、公司方向、投资者展示"],
+      ["市场与消费者洞察经理", "SUN Xinhao", "市场研究、问卷分析、销售预测"],
+      ["生产与供应链经理", "SHEN Chong", "生产计划、供应商、物料与设备成本控制"],
+      ["质量、安全与可持续经理", "KONG Zijie", "产品安全、废弃物管理、工厂布局、可持续"],
+      ["财务与运营协调", "团队角色", "预算、现金流、盈亏平衡分析、商业计划整合"]
+    ]
+  },
+  products: {
+    specs: [
+      ["产品名称", "Vital Radiance 内在美容软胶囊"],
+      ["剂型", "软胶囊"],
+      ["包装规格", "每瓶 60 粒"],
+      ["建议用量", "每日 2 粒"],
+      ["使用周期", "每瓶 30 天"],
+      ["目标保质期", "24 个月，初步目标"],
+      ["储存条件", "阴凉干燥，避开高温和潮湿"],
+      ["功能方向", "水润支持、弹性支持、抗氧化防护"]
+    ],
+    ingredients: [
+      ["胶原蛋白肽", "250 mg", "结构支持概念"],
+      ["透明质酸钠", "50 mg", "水润相关支持"],
+      ["维生素 C", "80 mg", "抗氧化与胶原支持配方角色"],
+      ["虾青素预混物", "20 mg", "抗氧化活性成分"],
+      ["载体油与辅料", "100 mg", "填充稳定性与工艺适配"]
+    ],
+    services: [
+      ["使用指导", "购买后提供清晰用量、储存和日常使用建议。"],
+      ["质量追溯", "每瓶产品通过批次码关联质量追踪与放行记录。"],
+      ["破损包装支持", "如收到破损或渗漏产品，可联系支持团队进入换货审核。"],
+      ["订阅支持", "订阅客户可在下个计费周期前调整、暂停或取消。"],
+      ["过敏与安全提醒", "孕期、哺乳期、过敏或治疗中人群应查看成分并咨询专业人士。"],
+      ["客服响应时间", "客服目标为工作日 48 小时内响应。"]
+    ]
+  },
+  manufacturing: {
+    capacity: [
+      { label: "年产瓶数", value: "500,000", detail: "规划产能" },
+      { label: "年产软胶囊", value: "30,000,000", detail: "每瓶 60 粒" },
+      { label: "日产瓶数", value: "1,667", detail: "生产基准" },
+      { label: "日产软胶囊", value: "100,020", detail: "产能基准" }
+    ],
+    method:
+      "拟定生产路线采用批式软胶囊生产系统，支持多活性成分、受控填充制备、批次追溯、清洁纪律和质量放行节点。",
+    sequence: [
+      "原材料接收与检验",
+      "称量与分装",
+      "填充液制备与混合",
+      "真空脱气",
+      "软胶囊成型",
+      "滚笼干燥",
+      "托盘干燥 / 固化",
+      "检验与分选",
+      "装瓶、旋盖与封口",
+      "贴标、装盒与成品储存"
+    ],
+    equipment: [
+      ["称量与分装站", "原料分装与批次控制"],
+      ["夹套混合罐", "填充液制备与受控混合"],
+      ["真空脱气罐", "去除填充物中的夹带空气"],
+      ["软胶囊成型机", "胶囊成型、填充与封合"],
+      ["滚笼干燥机", "新鲜软胶囊初步干燥"],
+      ["托盘干燥室 / 受控干燥室", "最终干燥与固化"],
+      ["检验与分选站", "缺陷剔除与产品分选"],
+      ["瓶装计数灌装线", "每瓶填充 60 粒胶囊"],
+      ["旋盖、封口与贴标线", "完成初级包装"],
+      ["装盒机", "二级包装"]
+    ],
+    quality: [
+      "来料检验",
+      "批次码追溯",
+      "填充量一致性检查",
+      "干燥与固化控制",
+      "外观检验与分选",
+      "瓶装数量与包装放行"
+    ],
+    layoutZones: ["接收", "分装", "混合", "脱气", "胶囊填充", "干燥", "检验", "包装", "QC 实验室", "成品"]
+  },
+  marketing: {
+    overview: [
+      ["目标市场", "25-45 岁健康意识人群，以城市女性早期用户为核心。"],
+      ["调研洞察", "109 份反馈；72% 女性；78.9% 中高关注；52%+ 偏好软胶囊。"],
+      ["市场机会", "全球抗衰营养补充市场预计 2030 年超过 USD 6.9B。"],
+      ["品牌定位", "高端、科学背书的内在美容软胶囊。"],
+      ["竞争空位", "多数竞品聚焦单一成分；Vital Radiance 组合四类功能活性。"],
+      ["销售渠道", "官网、小红书、TikTok/Instagram、电商与健康零售。"]
+    ],
+    timeline: [
+      ["第 1 年", "上市认知", "通过官网内容、达人教育和试用组合建立产品信任。"],
+      ["第 2 年", "订阅增长", "强化订阅权益、CRM、电商评价和复购教育。"],
+      ["第 3 年", "区域增长", "开启区域健康零售与诊所合作试点，同时保护宣称合规。"]
+    ],
+    swot: [
+      ["优势", "多功能配方、软胶囊剂型、高端定位、透明成分沟通"],
+      ["劣势", "新品牌认知有限、生产与营销成本较高、依赖专业供应商"],
+      ["机会", "内在美容市场增长、预防型健康兴趣上升、数字营销潜力强"],
+      ["威胁", "成熟竞品、价格敏感用户、原料价格波动、法规与 QC 风险"]
+    ],
+    contingency: [
+      ["销量低于预测", "增加试用装、组合折扣、订阅激励和定向社媒投放"],
+      ["原料成本上涨", "启用备选供应商，谈判批量采购合同并调整库存计划"],
+      ["竞品降价", "强调配方质量、透明度、追溯和高端体验"],
+      ["质量问题或批次缺陷", "停止发货，追踪受影响批次，调查原因并安排必要换货"],
+      ["平台流量下滑", "强化官网、邮件名单、SEO 内容和多渠道分销"],
+      ["法规或标签变化", "保持法务审核，更新标签，避免夸大治疗宣称"]
+    ]
+  },
+  financial: {
+    disclaimer: "课程估算模型；并非审计财务报表。",
+    assumptions: [
+      ["平均净售价", "CNY 280 / 瓶"],
+      ["第 1 年销量", "224,000 瓶"],
+      ["第 1 年产能利用率", "约为 500,000 瓶/年的 45%"],
+      ["第 1 年单位变动成本", "CNY 118 / 瓶"],
+      ["月固定运营成本", "CNY 700,000"],
+      ["初始投资", "CNY 20,000,000"],
+      ["模型估算税率", "经营利润的 25%"],
+      ["生产产能基准", "500,000 瓶/年"]
+    ],
+    initialInvestment: [
+      ["生产设备采购", "CNY 1,300,000"],
+      ["安装、校准与加工", "CNY 700,000"],
+      ["厂房改造、GMP 分区与 QC 实验室", "CNY 2,400,000"],
+      ["网站、品牌系统、标签与包装设计", "CNY 600,000"],
+      ["首批原料与包装库存", "CNY 3,200,000"],
+      ["产品测试、文件与法规审核", "CNY 500,000"],
+      ["上市营销与达人活动", "CNY 4,000,000"],
+      ["前 3 个月工资、租金与水电储备", "CNY 2,500,000"],
+      ["仓储、物流搭建与电商保证金", "CNY 1,300,000"],
+      ["预备金", "CNY 3,500,000"],
+      ["初始投资合计", "CNY 20,000,000"]
+    ],
+    variableCosts: [
+      ["活性成分与胶囊壳材料", "CNY 13.74"],
+      ["瓶、盖、标签与纸盒", "CNY 8.00"],
+      ["直接生产人工", "CNY 15.00"],
+      ["水电与生产耗材", "CNY 3.00"],
+      ["QC 耗材与批次放行", "CNY 6.00"],
+      ["仓储与物流", "CNY 12.00"],
+      ["支付与平台佣金", "CNY 10.00"],
+      ["售后与退换预留", "CNY 4.00"],
+      ["变动推广 / 获客", "CNY 49.26"],
+      ["变动成本合计", "CNY 118.00"]
+    ],
+    fixedCosts: [
+      ["场地租金与办公行政", "CNY 80,000"],
+      ["人员薪酬", "CNY 220,000"],
+      ["QA/QC 管理费用", "CNY 60,000"],
+      ["保险、法务与会计", "CNY 45,000"],
+      ["维护与校准", "CNY 35,000"],
+      ["网站、平台与 IT 运营", "CNY 25,000"],
+      ["折旧与摊销", "CNY 35,000"],
+      ["基础营销内容与品牌运营", "CNY 200,000"],
+      ["办公与预备费用", "CNY 5,000"],
+      ["月固定成本合计", "CNY 700,000"]
+    ],
+    monthlyProjection: [
+      ["1", "5,000", "140.0", "59.0", "70.0", "8.3", "-1991.8"],
+      ["2", "6,000", "168.0", "70.8", "70.0", "20.4", "-1971.4"],
+      ["3", "8,000", "224.0", "94.4", "70.0", "44.7", "-1926.7"],
+      ["4", "10,000", "280.0", "118.0", "70.0", "69.0", "-1857.7"],
+      ["5", "12,000", "336.0", "141.6", "70.0", "93.3", "-1764.4"],
+      ["6", "15,000", "420.0", "177.0", "70.0", "129.8", "-1634.6"],
+      ["7", "18,000", "504.0", "212.4", "70.0", "166.2", "-1468.4"],
+      ["8", "22,000", "616.0", "259.6", "70.0", "214.8", "-1253.6"],
+      ["9", "26,000", "728.0", "306.8", "70.0", "263.4", "-990.2"],
+      ["10", "30,000", "840.0", "354.0", "70.0", "312.0", "-678.2"],
+      ["11", "34,000", "952.0", "401.2", "70.0", "360.6", "-317.6"],
+      ["12", "38,000", "1064.0", "448.4", "70.0", "409.2", "91.6"],
+      ["合计", "224,000", "6272.0", "2643.2", "840.0", "2091.6", "91.6"]
+    ],
+    yearlyProjection: [
+      ["第 1 年", "224,000", "62.72", "26.43", "8.40", "20.92", "0.92"],
+      ["第 2 年", "320,000", "88.32", "37.12", "10.20", "30.75", "31.67"],
+      ["第 3 年", "420,000", "114.66", "47.88", "12.00", "41.09", "72.75"],
+      ["第 4 年", "500,000", "135.00", "56.50", "14.00", "48.38", "121.13"],
+      ["第 5 年", "550,000", "147.40", "61.60", "15.50", "52.73", "173.85"]
+    ],
+    breakEven: [
+      ["贡献毛利", "CNY 162 / 瓶", "CNY 280 售价 - CNY 118 变动成本"],
+      ["月盈亏平衡销量", "4,321 瓶", "CNY 700,000 / CNY 162"],
+      ["年盈亏平衡销量", "51,852 瓶", "4,321 x 12"],
+      ["回本周期", "约 11.8 个月", "初始投资接近第 1 年末收回"],
+      ["第 1 年 ROI", "104.6%", "CNY 20.92m / CNY 20.00m"]
+    ],
+    sensitivity: [
+      ["基准情景", "CNY 20.92 million", "0%", "维持上市计划"],
+      ["销量下降 20%", "CNY 15.47 million", "-26.0%", "增加订阅权益、试用和定向投放"],
+      ["单位变动成本上升 15%", "CNY 17.94 million", "-14.2%", "启用备选供应商和批量采购合同"],
+      ["售价下降 10%", "CNY 16.21 million", "-22.5%", "通过组合装和降低获客成本保护利润率"],
+      ["下行情景组合", "CNY 9.33 million", "-55.4%", "推迟扩张，压缩投放，聚焦盈利渠道"],
+      ["销量上升 15%", "CNY 25.00 million", "+19.5%", "增加班次或部分外包以满足需求"]
+    ]
+  },
+  contact: {
+    cards: [
+      ["客户支持", "support@vitalglowbio.com", "使用、订单与售后帮助"],
+      ["投资者关系", "investor@vitalglowbio.com", "财务摘要与商业计划请求"],
+      ["质量与追溯", "qc@vitalglowbio.com", "批次码与产品质量问题"],
+      ["商务合作", "partnership@vitalglowbio.com", "零售、健康机构与诊所合作"]
+    ],
+    sales: [
+      ["单瓶购买", "适合首次用户的 30 天用量"],
+      ["订阅方案", "月度配送，享受优惠价格"],
+      ["3 瓶组合", "适合连续使用的 90 天周期"],
+      ["零售合作", "开放给精选健康零售与诊所"],
+      ["投资咨询", "可按需提供财务摘要与商业计划"],
+      ["批发渠道", "经销商、企业健康福利与批量采购沟通"]
+    ],
+    office: "Vital Glow Biosciences 香港区域办公室",
+    hours: "周一至周五，9:00 至 18:00"
+  },
+  disclaimer:
+    "Vital Radiance 被设计为营养补充产品，并非用于诊断、治疗或治愈疾病。请遵循建议用量。过敏、孕期、哺乳期或正在接受治疗的消费者，应先咨询专业人士。请置于阴凉干燥处并远离儿童。"
+} as const;
+
+const localizedBusinessPlan = {
+  en: businessPlan,
+  zh: zhBusinessPlan
+} as const;
+
+const businessPageCopy = {
+  en: {
+    common: {
+      mobileNote: "Scroll horizontally on mobile."
+    },
+    snapshot: {
+      eyebrow: "Phase 3 / Business Plan",
+      title: "Business Plan Snapshot",
+      body:
+        "The landing page now connects the product story to commercial readiness: planned capacity, break-even volume, payback period and Year 1 ROI.",
+      actions: [
+        ["View Financial Plan", "#/financial"],
+        ["Explore Manufacturing", "#/manufacturing"],
+        ["Contact Investor Relations", "#/contact"]
+      ]
+    },
+    company: {
+      hero: {
+        eyebrow: "Company Profile",
+        title: "Vital Glow Biosciences",
+        subtitle: "Science-backed beauty from within.",
+        imageAlt: "Premium Vital Radiance bioscience studio with an amber softgel capsule",
+        actions: [
+          ["View Product", "#/products"],
+          ["View Financial Plan", "#/financial"],
+          ["Contact Investor Relations", "#/contact"]
+        ]
+      },
+      mission: "Mission",
+      vision: "Vision",
+      story: {
+        alt: "Vital Radiance softgel science visualization with hydration, collagen and antioxidant cues",
+        title: "From cellular skin logic to daily ritual",
+        body:
+          "The company story feels strongest when the science layer is visible: a controlled, luminous system rather than plain corporate copy.",
+        stats: [
+          ["Evidence tone", "Science-led"],
+          ["Brand feel", "Premium wellness"]
+        ]
+      },
+      valuesHeader: ["Operating Principles", "Core Values"],
+      teamHeader: ["Team", "Management Structure"],
+      teamCaption: "Management structure and responsibility map",
+      teamHeaders: ["Position", "Suggested Personnel", "Main Responsibilities"],
+      architectureAria: "Core values architecture diagram",
+      architectureNodes: ["Evidence", "Batch Safety", "Transparency", "Responsible", "Trust"],
+      architectureCore: ["Product Quality", "Trust System"],
+      cta: ["Ready to discuss partnership or investment?", "#/contact", "Open Contact Page"]
+    },
+    products: {
+      hero: {
+        eyebrow: "Products and Services",
+        title: "Vital Radiance Softgel System",
+        subtitle: "A 60-softgel, 30-day routine designed for daily skin nutrition support.",
+        body:
+          "Vital Radiance keeps the existing product formula story while adding product specifications, after-sales services and safety guidance required for the company website.",
+        imageAlt: "Branded Vital Radiance bottle and 30-day softgel routine tray",
+        actions: [
+          ["Review Formula", "#formula-table"],
+          ["After-sales Services", "#after-sales"]
+        ]
+      },
+      specHeader: ["Product Specs", "Daily Routine Format"],
+      specCaption: "Vital Radiance product specification",
+      specStory: {
+        alt: "Branded Vital Radiance bottle with arranged amber softgels",
+        title: "Softgel architecture",
+        body:
+          "A product-detail visual gives the specification table the same premium, technical confidence as the HOME page.",
+        stats: [
+          ["Format", "60 softgels"],
+          ["Routine", "30 days"]
+        ]
+      },
+      formulaHeader: ["Ingredient Highlights", "Formula Positioning"],
+      formulaCaption: "Ingredient highlights and functional positioning",
+      formulaStory: {
+        alt: "Vital Radiance formula visualization with branded bottle and amber softgel",
+        title: "Hydration, structure and antioxidant cues",
+        body:
+          "The ingredient section now has a visual anchor, so it reads as a formula story instead of a spreadsheet dropped into the page.",
+        stats: [
+          ["Actives", "4 highlighted"],
+          ["Positioning", "Beauty-from-within"]
+        ]
+      },
+      routineVisual: {
+        alt: "Vital Radiance bottle and amber softgels arranged as a daily routine",
+        title: "Routine architecture",
+        body:
+          "The softgel system is shown as a connected product experience: format, daily rhythm and safety boundary working together.",
+        stats: [
+          ["Format", "Softgel"],
+          ["Cycle", "30 days"]
+        ]
+      },
+      structureHeader: ["Use Structure", "Why the Softgel System Works"],
+      supportHeader: ["After-sales Services", "Customer Support System"],
+      supportVisual: {
+        alt: "Vital Radiance support, traceability and service channel scene",
+        title: "Service loop with traceability",
+        body:
+          "Support content is tied to visible batch, replacement and subscription checkpoints instead of repeating identical generic cards.",
+        stats: [
+          ["Response", "48h"],
+          ["Service nodes", "6"]
+        ]
+      },
+      cta: ["Need support, batch traceability or a partnership contact?", "#/contact", "Contact Vital Glow"]
+    },
+    manufacturing: {
+      hero: {
+        eyebrow: "Production Plan and Technical Information",
+        title: "Batch Softgel Manufacturing Route",
+        subtitle: "Capacity, equipment, QC and plant layout for a credible Phase 3 production plan.",
+        imageAlt: "Branded Vital Radiance softgel manufacturing and bottling line",
+        actions: [
+          ["View Equipment", "#equipment"],
+          ["Quality Controls", "#qc"]
+        ]
+      },
+      capacityHeader: ["Capacity KPI", "Production Capacity Basis"],
+      capacityStory: {
+        alt: "Branded Vital Radiance production line with amber softgels and finished bottles",
+        title: "A credible production environment",
+        body:
+          "Capacity numbers feel more trustworthy when paired with the clean-room line and bottle-packaging endpoint.",
+        stats: [
+          ["Annual plan", "500,000 bottles"],
+          ["Daily basis", "100,020 softgels"]
+        ]
+      },
+      sequenceHeader: ["Process Method", "Manufacturing Sequence"],
+      equipmentHeader: ["Major Equipment", "Equipment and Function"],
+      equipmentAria: "Major equipment and function list",
+      equipmentNote: "Major equipment for the proposed softgel production route",
+      sequenceAria: "Manufacturing sequence with visual process cues",
+      qualityHeader: ["Quality Control", "Release Checkpoints"],
+      qualityAria: "Manufacturing release checkpoints with visual cues",
+      layout: {
+        aria: "Simplified plant layout diagram",
+        eyebrow: "Plant Layout",
+        title: "Simplified Production Flow",
+        body:
+          "Zones show how materials move from receiving to finished-goods storage without losing batch identity.",
+        semiTitle: "In-process semi-finished goods"
+      },
+      cta: ["See how manufacturing capacity connects to the financial model.", "#/financial", "Open Financial Plan"]
+    },
+    marketing: {
+      hero: {
+        eyebrow: "Marketing Plan",
+        title: "Premium Beauty-from-Within Launch Strategy",
+        subtitle: "Target market, survey insight, channel plan, SWOT and contingency response.",
+        body:
+          "Vital Radiance is positioned for health-conscious adults aged 25 to 45 who value skincare, wellness and preventive routines.",
+        imageAlt: "Branded Vital Radiance launch strategy product scene",
+        actions: [
+          ["SWOT Analysis", "#swot"],
+          ["Contingency Plan", "#contingency"]
+        ]
+      },
+      storyHeader: ["Market Story", "Target and Opportunity"],
+      audienceStory: {
+        alt: "Vital Radiance branded product with abstract audience and channel cues",
+        title: "Launch content with product gravity",
+        body:
+          "The marketing page now keeps the product physically present while the channel and audience cards do the business-plan work.",
+        stats: [
+          ["Audience", "25-45"],
+          ["Survey", "109 responses"]
+        ]
+      },
+      timelineHeader: ["Promotion Timeline", "Three-Year Growth Plan"],
+      timelineStory: {
+        alt: "Vital Radiance branded softgel routine tray used for launch timeline",
+        title: "From launch awareness to regional pilots",
+        body: "A single product silhouette keeps the timeline from becoming a generic strategy slide.",
+        stats: [
+          ["Year 1", "Trust building"],
+          ["Year 3", "Retail pilots"]
+        ]
+      },
+      swotHeader: ["SWOT", "Strategic Readiness"],
+      swotAria: "Connected SWOT analysis",
+      swotCore: "Launch Readiness",
+      contingencyHeader: ["Contingency Plan", "Risk Response Matrix"],
+      contingencyCaption: "Marketing and operating contingency response plan",
+      contingencyHeaders: ["Risk", "Response Plan"],
+      contingencyNote: "Risk response list",
+      cta: ["Connect the market launch plan to cost and cash-flow assumptions.", "#/financial", "View Financial Plan"]
+    },
+    financial: {
+      hero: {
+        eyebrow: "Financial Plan",
+        title: "Vital Radiance Launch and Scale-up Model",
+        subtitle: "Base-case financial model for launch readiness, break-even and investment return.",
+        imageAlt: "Branded Vital Radiance financial model scene with product and growth chart",
+        actions: [
+          ["12-Month Projection", "#monthly-projection"],
+          ["Sensitivity Analysis", "#sensitivity"]
+        ]
+      },
+      dashboardHeader: ["Model Summary", "Financial Model Dashboard"],
+      assumptionsPane: ["Assumptions", "Base Case Inputs"],
+      assumptionsCaption: "Financial assumptions",
+      assumptionsHeaders: ["Item", "Assumption"],
+      operationsHeader: ["Capital and Cost", "Investment, Unit Economics and Payback"],
+      investmentPane: ["Investment", "Initial Investment"],
+      investmentCaption: "Initial investment table",
+      investmentHeaders: ["Item", "Estimated Cost"],
+      variablePane: ["Variable Cost", "Cost per Bottle"],
+      variableCaption: "Variable cost per bottle",
+      variableHeaders: ["Cost Item", "Estimated Cost per Bottle"],
+      fixedPane: ["Fixed Cost", "Monthly Operating Cost"],
+      fixedCaption: "Monthly fixed operating costs",
+      fixedHeaders: ["Cost Item", "Monthly Cost"],
+      projectionHeader: ["Projection", "Monthly Cash Flow and 5-Year Scale-up"],
+      monthlyPane: ["12-Month Projection", "Cash Flow, Unit: CNY 10,000"],
+      monthlyCaption: "12-month projection, unit CNY 10,000",
+      monthlyHeaders: ["Month", "Sales Volume", "Revenue", "Variable Cost", "Fixed Cost", "After-tax Cash Flow", "Cumulative Cash"],
+      yearlyPane: ["5-Year Projection", "Scale-up View, Unit: CNY million"],
+      yearlyCaption: "5-year projection, unit CNY million",
+      yearlyHeaders: ["Year", "Sales Volume", "Revenue", "Variable Cost", "Fixed Cost", "Estimated Net Profit", "Cumulative Cash after Initial Investment"],
+      sensitivityHeader: ["Sensitivity Analysis", "Downside, Upside and Investor Response"],
+      sensitivityCaption: "Sensitivity analysis",
+      sensitivityHeaders: ["Scenario", "Year 1 Net Profit", "Change vs Base Case", "Response Strategy"],
+      breakEvenPane: ["Break-even", "Payback and ROI"],
+      breakEvenCaption: "Break-even, payback and ROI formulas",
+      breakEvenHeaders: ["Metric", "Value", "Formula / Notes"],
+      chart: {
+        title: "Estimated Net Profit",
+        body: "Unit: CNY million. Rendered in CSS so values stay selectable in the table.",
+        aria: "Estimated net profit by year",
+        shortYears: ["Y1", "Y2", "Y3", "Y4", "Y5"]
+      },
+      fiveYear: {
+        title: "Five-year Growth Motion",
+        body: "Revenue bars rise while cumulative cash draws forward through the scale-up period.",
+        aria: "Five-year revenue and cumulative cash animation",
+        legend: [
+          ["Revenue", "CNY million"],
+          ["Cumulative Cash", "after initial investment"]
+        ],
+        shortYears: ["Y1", "Y2", "Y3", "Y4", "Y5"]
+      },
+      investor: {
+        title: "Investor Reading",
+        body:
+          "The risk table now sits beside the funding conversation, so downside actions, payback and contact intent are read as one decision path.",
+        stats: [
+          ["Base net profit", "CNY 20.92m"],
+          ["Payback", "11.8 months"],
+          ["Year 1 ROI", "104.6%"],
+          ["Break-even", "4,321 / month"]
+        ],
+        action: "Contact IR"
+      }
+    },
+    contact: {
+      hero: {
+        eyebrow: "Contact and Sales Information",
+        title: "Get in touch with Vital Glow Biosciences",
+        subtitle: "Customer support, investor relations, quality traceability and partnership channels.",
+        body: "This demo form is a front-end mock for Phase 3 acceptance. It records no data and sends no email.",
+        imageAlt: "Vital Radiance branded traceability and support channel scene",
+        actions: [
+          ["Investor Email", "mailto:investor@vitalglowbio.com"],
+          ["Customer Support", "mailto:support@vitalglowbio.com"]
+        ]
+      },
+      cardsHeader: ["Contact Cards", "Reach the Right Team"],
+      supportStory: {
+        alt: "Vital Radiance branded support scene with traceability and channel icons",
+        title: "Support with a traceable quality backbone",
+        body:
+          "Contact information now has a premium operational context, matching the tone of the HOME and hero pages.",
+        stats: [
+          ["Support", "48h target"],
+          ["Channels", "4 teams"]
+        ]
+      },
+      formHeader: ["Enterprise Inquiry", "Send a Detailed Inquiry"],
+      form: {
+        labels: {
+          name: "Full Name",
+          email: "Work Email",
+          company: "Company / Organization",
+          role: "Role / Department",
+          phone: "Phone / WhatsApp",
+          market: "Market / Region",
+          type: "Inquiry Type",
+          interest: "Product / Program Interest",
+          volume: "Estimated Annual Volume",
+          timeline: "Target Launch Timeline",
+          documentation: "Documentation Needed",
+          batch: "Order / Batch Number",
+          contactWindow: "Preferred Contact Window",
+          message: "Message / Requirements"
+        },
+        placeholders: {
+          market: "Hong Kong, Southeast Asia, EU...",
+          batch: "Optional",
+          contactWindow: "Weekdays, 9:00-18:00 HKT"
+        },
+        selects: {
+          one: "Select one",
+          range: "Select range",
+          timing: "Select timing",
+          type: [
+            "Customer Support",
+            "Investor Relations",
+            "Quality & Traceability",
+            "Retail / Distributor Partnership",
+            "Wholesale / Corporate Wellness",
+            "Regulatory Documentation"
+          ],
+          interest: ["Vital Radiance softgel", "Subscription program", "Retail bundle", "Private consultation", "Investor materials"],
+          volume: ["Under 1,000 bottles", "1,000-10,000 bottles", "10,000-50,000 bottles", "50,000+ bottles", "Not applicable"],
+          timeline: ["Immediate", "1-3 months", "3-6 months", "6+ months", "Exploratory"],
+          documentation: ["COA / batch release summary", "Ingredient and allergen details", "Business plan / financial deck", "Retail partnership kit", "No documents yet"]
+        },
+        consent: "I understand this demo form does not send real email.",
+        submit: "Submit Mock Inquiry",
+        success: "Mock inquiry submitted. The success message is visible for acceptance testing."
+      },
+      salesHeader: ["Sales Information", "Commercial Options"],
+      location: {
+        southChina: "SOUTH CHINA",
+        regionScale: "Guangzhou / Shenzhen / Hong Kong",
+        prd: "PEARL RIVER DELTA",
+        prdScale: "zoom target: Hong Kong harbour",
+        hongKong: "HONG KONG",
+        local: "LOCAL DETAIL",
+        localScale: "office area lock-on",
+        officeLabel: "Regional Office"
+      },
+      cta: ["Interested in partnership or investment?", "mailto:investor@vitalglowbio.com", "Email Investor Relations"]
+    }
+  },
+  zh: {
+    common: {
+      mobileNote: "移动端可横向滚动。"
+    },
+    snapshot: {
+      eyebrow: "Phase 3 / 商业计划",
+      title: "商业计划快照",
+      body: "首页将产品故事连接到商业可行性：规划产能、盈亏平衡、回本周期与第 1 年 ROI。",
+      actions: [
+        ["查看财务计划", "#/financial"],
+        ["了解生产计划", "#/manufacturing"],
+        ["联系投资者关系", "#/contact"]
+      ]
+    },
+    company: {
+      hero: {
+        eyebrow: "公司简介",
+        title: "Vital Glow Biosciences",
+        subtitle: "以科学支持内在美。",
+        imageAlt: "带有琥珀软胶囊的 Vital Radiance 高端生物科技场景",
+        actions: [
+          ["查看产品", "#/products"],
+          ["查看财务计划", "#/financial"],
+          ["联系投资者关系", "#/contact"]
+        ]
+      },
+      mission: "使命",
+      vision: "愿景",
+      story: {
+        alt: "Vital Radiance 软胶囊科学可视化，包含水润、胶原和抗氧化线索",
+        title: "从肌肤逻辑到日常习惯",
+        body: "公司故事需要可见的科学层：受控、清晰、有光感，而不只是普通企业介绍。",
+        stats: [
+          ["证据语气", "科学导向"],
+          ["品牌质感", "高端健康"]
+        ]
+      },
+      valuesHeader: ["运营原则", "核心价值"],
+      teamHeader: ["团队", "管理结构"],
+      teamCaption: "管理结构与责任分工",
+      teamHeaders: ["职位", "建议人员", "主要职责"],
+      architectureAria: "核心价值架构图",
+      architectureNodes: ["证据", "批次安全", "透明", "负责", "信任"],
+      architectureCore: ["产品质量", "信任系统"],
+      cta: ["准备讨论合作或投资吗？", "#/contact", "打开联系页面"]
+    },
+    products: {
+      hero: {
+        eyebrow: "产品与服务",
+        title: "Vital Radiance 软胶囊系统",
+        subtitle: "60 粒、30 天的日常肌肤营养支持方案。",
+        body: "Vital Radiance 保留原有配方故事，并补充官网所需的产品规格、售后服务与安全提示。",
+        imageAlt: "Vital Radiance 品牌产品瓶与 30 天软胶囊日常托盘",
+        actions: [
+          ["查看配方", "#formula-table"],
+          ["售后服务", "#after-sales"]
+        ]
+      },
+      specHeader: ["产品规格", "日常使用形式"],
+      specCaption: "Vital Radiance 产品规格",
+      specStory: {
+        alt: "Vital Radiance 品牌产品瓶与排列的琥珀软胶囊",
+        title: "软胶囊结构",
+        body: "产品细节视觉让规格表保持和首页一致的高端、技术感。",
+        stats: [
+          ["剂型", "60 粒软胶囊"],
+          ["周期", "30 天"]
+        ]
+      },
+      formulaHeader: ["成分亮点", "配方定位"],
+      formulaCaption: "成分亮点与功能定位",
+      formulaStory: {
+        alt: "Vital Radiance 配方可视化，包含品牌瓶与琥珀软胶囊",
+        title: "水润、结构与抗氧化线索",
+        body: "成分区加入视觉锚点后，更像配方故事，而不是孤立表格。",
+        stats: [
+          ["活性成分", "4 项亮点"],
+          ["定位", "内在美容"]
+        ]
+      },
+      routineVisual: {
+        alt: "Vital Radiance 产品瓶与琥珀软胶囊构成日常使用场景",
+        title: "使用周期结构",
+        body: "软胶囊系统把剂型、每日节奏和安全边界连接成完整产品体验。",
+        stats: [
+          ["剂型", "软胶囊"],
+          ["周期", "30 天"]
+        ]
+      },
+      structureHeader: ["使用结构", "软胶囊系统为何成立"],
+      supportHeader: ["售后服务", "客户支持系统"],
+      supportVisual: {
+        alt: "Vital Radiance 支持、追溯与服务渠道场景",
+        title: "带追溯的服务闭环",
+        body: "支持内容绑定批次、换货与订阅节点，避免重复的通用卡片。",
+        stats: [
+          ["响应", "48h"],
+          ["服务节点", "6"]
+        ]
+      },
+      cta: ["需要支持、批次追溯或合作联系人？", "#/contact", "联系 Vital Glow"]
+    },
+    manufacturing: {
+      hero: {
+        eyebrow: "生产计划与技术信息",
+        title: "批式软胶囊生产路线",
+        subtitle: "产能、设备、质控与厂房布局，支撑可信的 Phase 3 生产计划。",
+        imageAlt: "Vital Radiance 品牌软胶囊生产与瓶装线",
+        actions: [
+          ["查看设备", "#equipment"],
+          ["质量控制", "#qc"]
+        ]
+      },
+      capacityHeader: ["产能 KPI", "生产产能基准"],
+      capacityStory: {
+        alt: "Vital Radiance 生产线、琥珀软胶囊与成品瓶",
+        title: "可信的生产环境",
+        body: "产能数字搭配洁净线和瓶装终点后，更容易被理解为可执行计划。",
+        stats: [
+          ["年计划", "500,000 瓶"],
+          ["日基准", "100,020 粒"]
+        ]
+      },
+      sequenceHeader: ["工艺方法", "生产流程"],
+      equipmentHeader: ["主要设备", "设备与功能"],
+      equipmentAria: "主要设备与功能列表",
+      equipmentNote: "拟定软胶囊生产路线的主要设备",
+      sequenceAria: "带视觉线索的生产流程",
+      qualityHeader: ["质量控制", "放行检查点"],
+      qualityAria: "带视觉线索的生产放行检查点",
+      layout: {
+        aria: "简化厂房布局图",
+        eyebrow: "厂房布局",
+        title: "简化生产流",
+        body: "分区展示物料如何从接收流向成品储存，同时保持批次身份。",
+        semiTitle: "生产中半成品"
+      },
+      cta: ["查看生产产能如何连接财务模型。", "#/financial", "打开财务计划"]
+    },
+    marketing: {
+      hero: {
+        eyebrow: "营销计划",
+        title: "高端内在美容上市策略",
+        subtitle: "目标市场、调研洞察、渠道计划、SWOT 与应急响应。",
+        body: "Vital Radiance 面向重视护肤、健康和预防型习惯的 25-45 岁健康意识人群。",
+        imageAlt: "Vital Radiance 品牌上市策略产品场景",
+        actions: [
+          ["SWOT 分析", "#swot"],
+          ["应急计划", "#contingency"]
+        ]
+      },
+      storyHeader: ["市场故事", "目标与机会"],
+      audienceStory: {
+        alt: "Vital Radiance 品牌产品与抽象受众、渠道线索",
+        title: "以产品为重心的上市内容",
+        body: "营销页保留产品的物理存在，同时让渠道和受众卡片承担商业计划表达。",
+        stats: [
+          ["受众", "25-45"],
+          ["调研", "109 份反馈"]
+        ]
+      },
+      timelineHeader: ["推广时间线", "三年增长计划"],
+      timelineStory: {
+        alt: "用于上市时间线的 Vital Radiance 软胶囊日常托盘",
+        title: "从上市认知到区域试点",
+        body: "单一产品剪影让时间线不至于变成普通策略幻灯片。",
+        stats: [
+          ["第 1 年", "建立信任"],
+          ["第 3 年", "零售试点"]
+        ]
+      },
+      swotHeader: ["SWOT", "战略准备度"],
+      swotAria: "关联式 SWOT 分析",
+      swotCore: "上市准备度",
+      contingencyHeader: ["应急计划", "风险响应矩阵"],
+      contingencyCaption: "营销与运营应急响应计划",
+      contingencyHeaders: ["风险", "响应计划"],
+      contingencyNote: "风险响应列表",
+      cta: ["把市场上市计划连接到成本与现金流假设。", "#/financial", "查看财务计划"]
+    },
+    financial: {
+      hero: {
+        eyebrow: "财务计划",
+        title: "Vital Radiance 上市与扩张模型",
+        subtitle: "用于上市准备、盈亏平衡与投资回报的基准财务模型。",
+        imageAlt: "Vital Radiance 品牌财务模型场景，包含产品与增长图表",
+        actions: [
+          ["12 个月预测", "#monthly-projection"],
+          ["敏感性分析", "#sensitivity"]
+        ]
+      },
+      dashboardHeader: ["模型摘要", "财务模型仪表板"],
+      assumptionsPane: ["假设", "基准输入"],
+      assumptionsCaption: "财务假设",
+      assumptionsHeaders: ["项目", "假设"],
+      operationsHeader: ["资本与成本", "投资、单位经济与回本"],
+      investmentPane: ["投资", "初始投资"],
+      investmentCaption: "初始投资表",
+      investmentHeaders: ["项目", "估算成本"],
+      variablePane: ["变动成本", "每瓶成本"],
+      variableCaption: "每瓶变动成本",
+      variableHeaders: ["成本项目", "每瓶估算成本"],
+      fixedPane: ["固定成本", "月运营成本"],
+      fixedCaption: "月固定运营成本",
+      fixedHeaders: ["成本项目", "月成本"],
+      projectionHeader: ["预测", "月度现金流与 5 年扩张"],
+      monthlyPane: ["12 个月预测", "现金流，单位：CNY 10,000"],
+      monthlyCaption: "12 个月预测，单位 CNY 10,000",
+      monthlyHeaders: ["月份", "销量", "收入", "变动成本", "固定成本", "税后现金流", "累计现金"],
+      yearlyPane: ["5 年预测", "扩张视图，单位：CNY million"],
+      yearlyCaption: "5 年预测，单位 CNY million",
+      yearlyHeaders: ["年份", "销量", "收入", "变动成本", "固定成本", "估算净利润", "扣除初始投资后的累计现金"],
+      sensitivityHeader: ["敏感性分析", "下行、上行与投资者响应"],
+      sensitivityCaption: "敏感性分析",
+      sensitivityHeaders: ["情景", "第 1 年净利润", "相对基准变化", "响应策略"],
+      breakEvenPane: ["盈亏平衡", "回本与 ROI"],
+      breakEvenCaption: "盈亏平衡、回本与 ROI 公式",
+      breakEvenHeaders: ["指标", "数值", "公式 / 备注"],
+      chart: {
+        title: "估算净利润",
+        body: "单位：CNY million。图表由 CSS 渲染，表格数值仍可选中。",
+        aria: "按年份展示估算净利润",
+        shortYears: ["Y1", "Y2", "Y3", "Y4", "Y5"]
+      },
+      fiveYear: {
+        title: "五年增长动势",
+        body: "收入柱状上升，同时累计现金线穿过扩张周期。",
+        aria: "五年收入与累计现金动画",
+        legend: [
+          ["收入", "CNY million"],
+          ["累计现金", "扣除初始投资后"]
+        ],
+        shortYears: ["Y1", "Y2", "Y3", "Y4", "Y5"]
+      },
+      investor: {
+        title: "投资者阅读",
+        body: "风险表与融资讨论并列，便于同时理解下行动作、回本周期和联系意图。",
+        stats: [
+          ["基准净利润", "CNY 20.92m"],
+          ["回本", "11.8 个月"],
+          ["第 1 年 ROI", "104.6%"],
+          ["盈亏平衡", "4,321 / 月"]
+        ],
+        action: "联系 IR"
+      }
+    },
+    contact: {
+      hero: {
+        eyebrow: "联系与销售信息",
+        title: "联系 Vital Glow Biosciences",
+        subtitle: "客户支持、投资者关系、质量追溯与合作渠道。",
+        body: "该演示表单用于 Phase 3 验收前端展示，不记录数据，也不会发送邮件。",
+        imageAlt: "Vital Radiance 品牌追溯与支持渠道场景",
+        actions: [
+          ["投资者邮箱", "mailto:investor@vitalglowbio.com"],
+          ["客户支持", "mailto:support@vitalglowbio.com"]
+        ]
+      },
+      cardsHeader: ["联系卡片", "找到对应团队"],
+      supportStory: {
+        alt: "Vital Radiance 品牌支持场景，包含追溯与渠道图标",
+        title: "带质量追溯骨架的支持",
+        body: "联系信息加入高端运营语境，与首页和英雄区的语气保持一致。",
+        stats: [
+          ["支持", "48h 目标"],
+          ["渠道", "4 个团队"]
+        ]
+      },
+      formHeader: ["企业咨询", "发送详细咨询"],
+      form: {
+        labels: {
+          name: "姓名",
+          email: "工作邮箱",
+          company: "公司 / 组织",
+          role: "职位 / 部门",
+          phone: "电话 / WhatsApp",
+          market: "市场 / 区域",
+          type: "咨询类型",
+          interest: "产品 / 项目兴趣",
+          volume: "预计年采购量",
+          timeline: "目标上市时间",
+          documentation: "所需文件",
+          batch: "订单 / 批次号",
+          contactWindow: "偏好联系时间",
+          message: "留言 / 需求"
+        },
+        placeholders: {
+          market: "香港、东南亚、欧盟...",
+          batch: "选填",
+          contactWindow: "工作日，9:00-18:00 HKT"
+        },
+        selects: {
+          one: "请选择",
+          range: "请选择范围",
+          timing: "请选择时间",
+          type: ["客户支持", "投资者关系", "质量与追溯", "零售 / 经销合作", "批发 / 企业健康", "法规文件"],
+          interest: ["Vital Radiance 软胶囊", "订阅项目", "零售组合", "私人咨询", "投资者材料"],
+          volume: ["1,000 瓶以下", "1,000-10,000 瓶", "10,000-50,000 瓶", "50,000+ 瓶", "不适用"],
+          timeline: ["立即", "1-3 个月", "3-6 个月", "6+ 个月", "探索阶段"],
+          documentation: ["COA / 批次放行摘要", "成分与过敏原详情", "商业计划 / 财务材料", "零售合作资料", "暂不需要文件"]
+        },
+        consent: "我了解该演示表单不会发送真实邮件。",
+        submit: "提交模拟咨询",
+        success: "模拟咨询已提交。演示成功提示已显示。"
+      },
+      salesHeader: ["销售信息", "商务选项"],
+      location: {
+        southChina: "华南",
+        regionScale: "广州 / 深圳 / 香港",
+        prd: "珠三角",
+        prdScale: "缩放目标：香港海港",
+        hongKong: "香港",
+        local: "本地细节",
+        localScale: "办公区域定位",
+        officeLabel: "区域办公室"
+      },
+      cta: ["有合作或投资兴趣？", "mailto:investor@vitalglowbio.com", "发送邮件给投资者关系"]
+    }
+  }
+} as const;
+
+function getLocalizedPlan(lang: Lang) {
+  return localizedBusinessPlan[lang];
+}
+
 export function BusinessPage({ route, lang }: { route: BusinessRoutePath; lang: Lang }) {
   switch (route) {
     case "/company":
-      return <CompanyPage />;
+      return <CompanyPage lang={lang} />;
     case "/products":
-      return <ProductsServicesPage />;
+      return <ProductsServicesPage lang={lang} />;
     case "/manufacturing":
-      return <ManufacturingPlanPage />;
+      return <ManufacturingPlanPage lang={lang} />;
     case "/marketing":
-      return <MarketingPlanPage />;
+      return <MarketingPlanPage lang={lang} />;
     case "/financial":
-      return <FinancialPlanPage />;
+      return <FinancialPlanPage lang={lang} />;
     case "/contact":
       return <ContactPage lang={lang} />;
     default:
-      return <CompanyPage />;
+      return <CompanyPage lang={lang} />;
   }
 }
 
-export function BusinessSnapshot() {
+export function BusinessSnapshot({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].snapshot;
+  const plan = getLocalizedPlan(lang);
+
   return (
     <section className="business-snapshot page-section" id="business-plan" data-snap-section>
       <div className="section-copy">
-        <p className="section-label">Phase 3 / Business Plan</p>
-        <h2>Business Plan Snapshot</h2>
-        <p>
-          The landing page now connects the product story to commercial readiness: planned capacity,
-          break-even volume, payback period and Year 1 ROI.
-        </p>
+        <p className="section-label">{copy.eyebrow}</p>
+        <h2>{copy.title}</h2>
+        <p>{copy.body}</p>
       </div>
-      <KPIGrid items={businessPlan.snapshotKpis} />
+      <KPIGrid items={plan.snapshotKpis} />
       <div className="snapshot-cta-row">
-        <a className="primary-cta" href="#/financial">
-          View Financial Plan
-          <ChevronRight size={18} />
-        </a>
-        <a className="secondary-cta" href="#/manufacturing">
-          Explore Manufacturing
-        </a>
-        <a className="secondary-cta" href="#/contact">
-          Contact Investor Relations
-        </a>
+        {copy.actions.map(([label, href], index) => (
+          <a className={index === 0 ? "primary-cta" : "secondary-cta"} href={href} key={label}>
+            {label}
+            {index === 0 && <ChevronRight size={18} />}
+          </a>
+        ))}
       </div>
     </section>
   );
@@ -464,47 +1461,43 @@ export function SiteFooter({ lang }: { lang: Lang }) {
   );
 }
 
-function CompanyPage() {
+function CompanyPage({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].company;
+  const plan = getLocalizedPlan(lang);
+
   return (
     <>
       <SectionHero
-        eyebrow="Company Profile"
-        title="Vital Glow Biosciences"
-        subtitle="Science-backed beauty from within."
-        body={businessPlan.company.intro}
+        eyebrow={copy.hero.eyebrow}
+        title={copy.hero.title}
+        subtitle={copy.hero.subtitle}
+        body={plan.company.intro}
         image={assets.businessCompanyHero}
-        imageAlt="Premium Vital Radiance bioscience studio with an amber softgel capsule"
-        actions={[
-          ["View Product", "#/products"],
-          ["View Financial Plan", "#/financial"],
-          ["Contact Investor Relations", "#/contact"]
-        ]}
+        imageAlt={copy.hero.imageAlt}
+        actions={copy.hero.actions}
       />
       <section className="business-section two-column visual-led company-story-section">
         <div className="value-stack company-mission-stack">
-          <ValuePanel className="company-story-card mission-card" icon={<Target />} title="Mission" body={businessPlan.company.mission}>
+          <ValuePanel className="company-story-card mission-card" icon={<Target />} title={copy.mission} body={plan.company.mission}>
             <CompanyMissionMotion />
           </ValuePanel>
-          <ValuePanel className="company-story-card vision-card" icon={<LineChart />} title="Vision" body={businessPlan.company.vision}>
+          <ValuePanel className="company-story-card vision-card" icon={<LineChart />} title={copy.vision} body={plan.company.vision}>
             <CompanyVisionMotion />
           </ValuePanel>
         </div>
         <ImageStoryPanel
           image={assets.businessCompanyScience}
-          alt="Vital Radiance softgel science visualization with hydration, collagen and antioxidant cues"
-          title="From cellular skin logic to daily ritual"
-          body="The company story feels strongest when the science layer is visible: a controlled, luminous system rather than plain corporate copy."
-          stats={[
-            ["Evidence tone", "Science-led"],
-            ["Brand feel", "Premium wellness"]
-          ]}
+          alt={copy.story.alt}
+          title={copy.story.title}
+          body={copy.story.body}
+          stats={copy.story.stats}
         />
       </section>
       <section className="business-section company-values-section">
-        <SectionHeader eyebrow="Operating Principles" title="Core Values" />
+        <SectionHeader eyebrow={copy.valuesHeader[0]} title={copy.valuesHeader[1]} />
         <div className="company-values-stage">
           <div className="business-card-grid values-grid">
-            {businessPlan.company.values.map(([title, body], index) => {
+            {plan.company.values.map(([title, body], index) => {
               const visual = companyValueVisuals[index] ?? { icon: <BadgeCheck />, kind: "integrity" as const };
 
               return (
@@ -519,19 +1512,20 @@ function CompanyPage() {
               );
             })}
           </div>
-          <CompanyValuesArchitecture />
+          <CompanyValuesArchitecture lang={lang} />
         </div>
       </section>
       <section className="business-section company-team-section">
-        <SectionHeader eyebrow="Team" title="Management Structure" />
+        <SectionHeader eyebrow={copy.teamHeader[0]} title={copy.teamHeader[1]} />
         <ResponsiveTable
-          caption="Management structure and responsibility map"
+          caption={copy.teamCaption}
           className="team-table"
-          headers={["Position", "Suggested Personnel", "Main Responsibilities"]}
-          rows={businessPlan.company.team}
+          headers={copy.teamHeaders}
+          note={businessPageCopy[lang].common.mobileNote}
+          rows={plan.company.team}
         />
       </section>
-      <PageCTA title="Ready to discuss partnership or investment?" href="#/contact" label="Open Contact Page" />
+      <PageCTA title={copy.cta[0]} href={copy.cta[1]} label={copy.cta[2]} />
     </>
   );
 }
@@ -705,9 +1699,11 @@ function CompanyValueMiniMotion({ kind }: { kind: ValueMotionKind }) {
   );
 }
 
-function CompanyValuesArchitecture() {
+function CompanyValuesArchitecture({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].company;
+
   return (
-    <div className="company-values-architecture" aria-label="Core values architecture diagram">
+    <div className="company-values-architecture" aria-label={copy.architectureAria}>
       <svg viewBox="0 0 980 150" role="img" focusable="false">
         <defs>
           <linearGradient id="valueArchitectureFlow" x1="0" x2="1" y1="0" y2="0">
@@ -719,25 +1715,19 @@ function CompanyValuesArchitecture() {
         <path className="architecture-backbone" d="M80 82 H900" />
         <path className="architecture-flow flow-a" d="M96 72 C210 22 348 36 444 75 S641 126 794 62" />
         <path className="architecture-flow flow-b" d="M122 102 C245 138 362 116 490 82 S732 33 858 92" />
-        {[
-          [96, "Evidence"],
-          [292, "Batch Safety"],
-          [490, "Transparency"],
-          [688, "Responsible"],
-          [884, "Trust"]
-        ].map(([x, label], index) => (
-          <g className={`architecture-node node-${index + 1}`} key={label} transform={`translate(${x} 82)`}>
+        {[96, 292, 490, 688, 884].map((x, index) => (
+          <g className={`architecture-node node-${index + 1}`} key={copy.architectureNodes[index]} transform={`translate(${x} 82)`}>
             <circle r="18" />
             <circle className="node-core" r="5" />
-            <text y="42">{label}</text>
+            <text y="42">{copy.architectureNodes[index]}</text>
           </g>
         ))}
         <g className="architecture-core" transform="translate(490 82)">
           <rect x="-108" y="-31" width="216" height="62" rx="18" />
           <path d="M-58 0 H58" />
           <path d="M0 -19 V19" />
-          <text y="-6">Product Quality</text>
-          <text y="16">Trust System</text>
+          <text y="-6">{copy.architectureCore[0]}</text>
+          <text y="16">{copy.architectureCore[1]}</text>
         </g>
         <circle className="architecture-signal signal-one" cx="96" cy="72" r="5" />
         <circle className="architecture-signal signal-two" cx="316" cy="86" r="5" />
@@ -748,79 +1738,70 @@ function CompanyValuesArchitecture() {
   );
 }
 
-function ProductsServicesPage() {
+function ProductsServicesPage({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].products;
+  const plan = getLocalizedPlan(lang);
+
   return (
     <>
       <SectionHero
-        eyebrow="Products and Services"
-        title="Vital Radiance Softgel System"
-        subtitle="A 60-softgel, 30-day routine designed for daily skin nutrition support."
-        body="Vital Radiance keeps the existing product formula story while adding product specifications, after-sales services and safety guidance required for the company website."
+        eyebrow={copy.hero.eyebrow}
+        title={copy.hero.title}
+        subtitle={copy.hero.subtitle}
+        body={copy.hero.body}
         image={assets.businessProductHero}
-        imageAlt="Branded Vital Radiance bottle and 30-day softgel routine tray"
-        actions={[
-          ["Review Formula", "#formula-table"],
-          ["After-sales Services", "#after-sales"]
-        ]}
+        imageAlt={copy.hero.imageAlt}
+        actions={copy.hero.actions}
       />
       <section className="business-section two-column visual-led product-spec-section">
         <div>
-          <SectionHeader eyebrow="Product Specs" title="Daily Routine Format" />
+          <SectionHeader eyebrow={copy.specHeader[0]} title={copy.specHeader[1]} />
           <ProductDataList
-            caption="Vital Radiance product specification"
+            caption={copy.specCaption}
             icons={productSpecIcons}
             mode="spec"
-            rows={businessPlan.products.specs}
+            rows={plan.products.specs}
           />
         </div>
         <ImageStoryPanel
           image={assets.businessProductRoutine}
-          alt="Branded Vital Radiance bottle with arranged amber softgels"
-          title="Softgel architecture"
-          body="A product-detail visual gives the specification table the same premium, technical confidence as the HOME page."
-          stats={[
-            ["Format", "60 softgels"],
-            ["Routine", "30 days"]
-          ]}
+          alt={copy.specStory.alt}
+          title={copy.specStory.title}
+          body={copy.specStory.body}
+          stats={copy.specStory.stats}
         />
       </section>
       <section className="business-section two-column visual-led product-formula-section" id="formula-table">
         <div>
-          <SectionHeader eyebrow="Ingredient Highlights" title="Formula Positioning" />
+          <SectionHeader eyebrow={copy.formulaHeader[0]} title={copy.formulaHeader[1]} />
           <ProductDataList
-            caption="Ingredient highlights and functional positioning"
+            caption={copy.formulaCaption}
             icons={productFormulaIcons}
             mode="formula"
-            rows={businessPlan.products.ingredients}
+            rows={plan.products.ingredients}
           />
         </div>
         <ImageStoryPanel
           image={assets.businessFormula}
-          alt="Vital Radiance formula visualization with branded bottle and amber softgel"
-          title="Hydration, structure and antioxidant cues"
-          body="The ingredient section now has a visual anchor, so it reads as a formula story instead of a spreadsheet dropped into the page."
-          stats={[
-            ["Actives", "4 highlighted"],
-            ["Positioning", "Beauty-from-within"]
-          ]}
+          alt={copy.formulaStory.alt}
+          title={copy.formulaStory.title}
+          body={copy.formulaStory.body}
+          stats={copy.formulaStory.stats}
         />
       </section>
       <section className="business-section two-column visual-led product-structure-section">
         <ProductVisualPanel
           image={assets.productScene}
-          alt="Vital Radiance bottle and amber softgels arranged as a daily routine"
-          title="Routine architecture"
-          body="The softgel system is shown as a connected product experience: format, daily rhythm and safety boundary working together."
-          stats={[
-            ["Format", "Softgel"],
-            ["Cycle", "30 days"]
-          ]}
+          alt={copy.routineVisual.alt}
+          title={copy.routineVisual.title}
+          body={copy.routineVisual.body}
+          stats={copy.routineVisual.stats}
           variant="routine"
         />
         <div className="product-structured-copy">
-          <SectionHeader eyebrow="Use Structure" title="Why the Softgel System Works" />
+          <SectionHeader eyebrow={copy.structureHeader[0]} title={copy.structureHeader[1]} />
           <div className="product-structure-grid">
-            {productStructureCards.map((item, index) => (
+            {productStructureCards[lang].map((item, index) => (
               <article className="product-structure-card" key={item.title} style={{ "--motion-index": index } as React.CSSProperties}>
                 <span>{item.icon}</span>
                 <div>
@@ -840,106 +1821,100 @@ function ProductsServicesPage() {
       </section>
       <section className="business-section two-column visual-led product-support-section" id="after-sales">
         <div>
-          <SectionHeader eyebrow="After-sales Services" title="Customer Support System" />
+          <SectionHeader eyebrow={copy.supportHeader[0]} title={copy.supportHeader[1]} />
           <div className="business-card-grid product-service-grid">
-            {businessPlan.products.services.map(([title, body], index) => (
+            {plan.products.services.map(([title, body], index) => (
               <article className="business-card product-service-card" key={title} style={{ "--motion-index": index } as React.CSSProperties}>
                 <span>{productServiceIcons[index] ?? <CheckCircle2 />}</span>
-                <small>{String(index + 1).padStart(2, "0")} / {productServiceSignals[index]}</small>
+                <small>{String(index + 1).padStart(2, "0")} / {productServiceSignals[lang][index]}</small>
                 <h3>{title}</h3>
-                <p>{productServiceBriefs[index] ?? body}</p>
+                <p>{productServiceBriefs[lang][index] ?? body}</p>
               </article>
             ))}
           </div>
         </div>
         <ProductVisualPanel
           image={assets.businessContactSupport}
-          alt="Vital Radiance support, traceability and service channel scene"
-          title="Service loop with traceability"
-          body="Support content is tied to visible batch, replacement and subscription checkpoints instead of repeating identical generic cards."
-          stats={[
-            ["Response", "48h"],
-            ["Service nodes", "6"]
-          ]}
+          alt={copy.supportVisual.alt}
+          title={copy.supportVisual.title}
+          body={copy.supportVisual.body}
+          stats={copy.supportVisual.stats}
           variant="support"
         />
       </section>
-      <PageCTA title="Need support, batch traceability or a partnership contact?" href="#/contact" label="Contact Vital Glow" />
+      <PageCTA title={copy.cta[0]} href={copy.cta[1]} label={copy.cta[2]} />
     </>
   );
 }
 
-function ManufacturingPlanPage() {
+function ManufacturingPlanPage({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].manufacturing;
+  const plan = getLocalizedPlan(lang);
+
   return (
     <>
       <SectionHero
-        eyebrow="Production Plan and Technical Information"
-        title="Batch Softgel Manufacturing Route"
-        subtitle="Capacity, equipment, QC and plant layout for a credible Phase 3 production plan."
-        body={businessPlan.manufacturing.method}
+        eyebrow={copy.hero.eyebrow}
+        title={copy.hero.title}
+        subtitle={copy.hero.subtitle}
+        body={plan.manufacturing.method}
         image={assets.businessManufacturing}
-        imageAlt="Branded Vital Radiance softgel manufacturing and bottling line"
-        actions={[
-          ["View Equipment", "#equipment"],
-          ["Quality Controls", "#qc"]
-        ]}
+        imageAlt={copy.hero.imageAlt}
+        actions={copy.hero.actions}
       />
       <section className="business-section two-column visual-led manufacturing-capacity-section">
         <div>
-          <SectionHeader eyebrow="Capacity KPI" title="Production Capacity Basis" />
-          <KPIGrid items={businessPlan.manufacturing.capacity} />
+          <SectionHeader eyebrow={copy.capacityHeader[0]} title={copy.capacityHeader[1]} />
+          <KPIGrid items={plan.manufacturing.capacity} />
         </div>
         <ImageStoryPanel
           image={assets.businessManufacturingCapacity}
-          alt="Branded Vital Radiance production line with amber softgels and finished bottles"
-          title="A credible production environment"
-          body="Capacity numbers feel more trustworthy when paired with the clean-room line and bottle-packaging endpoint."
-          stats={[
-            ["Annual plan", "500,000 bottles"],
-            ["Daily basis", "100,020 softgels"]
-          ]}
+          alt={copy.capacityStory.alt}
+          title={copy.capacityStory.title}
+          body={copy.capacityStory.body}
+          stats={copy.capacityStory.stats}
         />
       </section>
       <section className="business-section manufacturing-sequence-section">
-        <SectionHeader eyebrow="Process Method" title="Manufacturing Sequence" />
-        <ManufacturingSequence />
+        <SectionHeader eyebrow={copy.sequenceHeader[0]} title={copy.sequenceHeader[1]} />
+        <ManufacturingSequence lang={lang} />
       </section>
       <section className="business-section two-column manufacturing-equipment-section" id="equipment">
         <div>
-          <SectionHeader eyebrow="Major Equipment" title="Equipment and Function" />
-          <EquipmentFunctionList />
+          <SectionHeader eyebrow={copy.equipmentHeader[0]} title={copy.equipmentHeader[1]} />
+          <EquipmentFunctionList lang={lang} />
         </div>
-        <PlantLayout />
+        <PlantLayout lang={lang} />
       </section>
       <section className="business-section manufacturing-quality-section" id="qc">
-        <SectionHeader eyebrow="Quality Control" title="Release Checkpoints" />
-        <QualityCheckpointGrid />
+        <SectionHeader eyebrow={copy.qualityHeader[0]} title={copy.qualityHeader[1]} />
+        <QualityCheckpointGrid lang={lang} />
       </section>
-      <PageCTA title="See how manufacturing capacity connects to the financial model." href="#/financial" label="Open Financial Plan" />
+      <PageCTA title={copy.cta[0]} href={copy.cta[1]} label={copy.cta[2]} />
     </>
   );
 }
 
-function MarketingPlanPage() {
+function MarketingPlanPage({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].marketing;
+  const plan = getLocalizedPlan(lang);
+
   return (
     <>
       <SectionHero
-        eyebrow="Marketing Plan"
-        title="Premium Beauty-from-Within Launch Strategy"
-        subtitle="Target market, survey insight, channel plan, SWOT and contingency response."
-        body="Vital Radiance is positioned for health-conscious adults aged 25 to 45 who value skincare, wellness and preventive routines."
+        eyebrow={copy.hero.eyebrow}
+        title={copy.hero.title}
+        subtitle={copy.hero.subtitle}
+        body={copy.hero.body}
         image={assets.businessMarketingLaunchHeroV2}
-        imageAlt="Branded Vital Radiance launch strategy product scene"
-        actions={[
-          ["SWOT Analysis", "#swot"],
-          ["Contingency Plan", "#contingency"]
-        ]}
+        imageAlt={copy.hero.imageAlt}
+        actions={copy.hero.actions}
       />
       <section className="business-section two-column visual-led marketing-story-section">
         <div>
-          <SectionHeader eyebrow="Market Story" title="Target and Opportunity" />
+          <SectionHeader eyebrow={copy.storyHeader[0]} title={copy.storyHeader[1]} />
           <div className="business-card-grid market-grid compact-grid">
-            {businessPlan.marketing.overview.map(([title, body], index) => {
+            {plan.marketing.overview.map(([title, body], index) => {
               const visual = marketingOverviewVisuals[index] ?? marketingOverviewVisuals[0];
 
               return (
@@ -958,162 +1933,163 @@ function MarketingPlanPage() {
         </div>
         <ImageStoryPanel
           image={assets.businessMarketingAudiencePanelV2}
-          alt="Vital Radiance branded product with abstract audience and channel cues"
-          title="Launch content with product gravity"
-          body="The marketing page now keeps the product physically present while the channel and audience cards do the business-plan work."
-          stats={[
-            ["Audience", "25-45"],
-            ["Survey", "109 responses"]
-          ]}
+          alt={copy.audienceStory.alt}
+          title={copy.audienceStory.title}
+          body={copy.audienceStory.body}
+          stats={copy.audienceStory.stats}
         />
       </section>
       <section className="business-section two-column visual-led marketing-timeline-section">
         <div>
-          <SectionHeader eyebrow="Promotion Timeline" title="Three-Year Growth Plan" />
-          <Timeline items={businessPlan.marketing.timeline} />
+          <SectionHeader eyebrow={copy.timelineHeader[0]} title={copy.timelineHeader[1]} />
+          <Timeline items={plan.marketing.timeline} />
         </div>
         <ImageStoryPanel
           image={assets.businessMarketingTimelinePanelV2}
-          alt="Vital Radiance branded softgel routine tray used for launch timeline"
-          title="From launch awareness to regional pilots"
-          body="A single product silhouette keeps the timeline from becoming a generic strategy slide."
-          stats={[
-            ["Year 1", "Trust building"],
-            ["Year 3", "Retail pilots"]
-          ]}
+          alt={copy.timelineStory.alt}
+          title={copy.timelineStory.title}
+          body={copy.timelineStory.body}
+          stats={copy.timelineStory.stats}
         />
       </section>
       <section className="business-section marketing-swot-section" id="swot">
-        <SectionHeader eyebrow="SWOT" title="Strategic Readiness" />
-        <MarketingSwotBoard />
+        <SectionHeader eyebrow={copy.swotHeader[0]} title={copy.swotHeader[1]} />
+        <MarketingSwotBoard lang={lang} />
       </section>
       <section className="business-section marketing-contingency-section" id="contingency">
-        <SectionHeader eyebrow="Contingency Plan" title="Risk Response Matrix" />
+        <SectionHeader eyebrow={copy.contingencyHeader[0]} title={copy.contingencyHeader[1]} />
         <ResponsiveTable
-          caption="Marketing and operating contingency response plan"
+          caption={copy.contingencyCaption}
           className="marketing-response-table"
-          headers={["Risk", "Response Plan"]}
-          note="Risk response list"
-          rows={businessPlan.marketing.contingency}
+          headers={copy.contingencyHeaders}
+          note={copy.contingencyNote}
+          rows={plan.marketing.contingency}
         />
       </section>
-      <PageCTA title="Connect the market launch plan to cost and cash-flow assumptions." href="#/financial" label="View Financial Plan" />
+      <PageCTA title={copy.cta[0]} href={copy.cta[1]} label={copy.cta[2]} />
     </>
   );
 }
 
-function FinancialPlanPage() {
+function FinancialPlanPage({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].financial;
+  const plan = getLocalizedPlan(lang);
+  const common = businessPageCopy[lang].common;
+
   return (
     <>
       <SectionHero
-        eyebrow="Financial Plan"
-        title="Vital Radiance Launch and Scale-up Model"
-        subtitle="Base-case financial model for launch readiness, break-even and investment return."
-        body={businessPlan.financial.disclaimer}
+        eyebrow={copy.hero.eyebrow}
+        title={copy.hero.title}
+        subtitle={copy.hero.subtitle}
+        body={plan.financial.disclaimer}
         image={assets.businessFinancial}
-        imageAlt="Branded Vital Radiance financial model scene with product and growth chart"
-        actions={[
-          ["12-Month Projection", "#monthly-projection"],
-          ["Sensitivity Analysis", "#sensitivity"]
-        ]}
+        imageAlt={copy.hero.imageAlt}
+        actions={copy.hero.actions}
       />
       <section className="business-section financial-dashboard-section">
-        <SectionHeader eyebrow="Model Summary" title="Financial Model Dashboard" />
+        <SectionHeader eyebrow={copy.dashboardHeader[0]} title={copy.dashboardHeader[1]} />
         <div className="financial-dashboard-layout">
           <div className="financial-dashboard-kpis">
-            <KPIGrid items={businessPlan.snapshotKpis} />
-            <p className="table-note">{businessPlan.financial.disclaimer}</p>
+            <KPIGrid items={plan.snapshotKpis} />
+            <p className="table-note">{plan.financial.disclaimer}</p>
           </div>
           <div className="financial-table-pane">
-            <FinancialPaneHeading eyebrow="Assumptions" title="Base Case Inputs" />
+            <FinancialPaneHeading eyebrow={copy.assumptionsPane[0]} title={copy.assumptionsPane[1]} />
             <ResponsiveTable
-              caption="Financial assumptions"
+              caption={copy.assumptionsCaption}
               className="financial-list-table financial-assumptions-table"
-              headers={["Item", "Assumption"]}
-              rows={businessPlan.financial.assumptions}
+              headers={copy.assumptionsHeaders}
+              note={common.mobileNote}
+              rows={plan.financial.assumptions}
             />
           </div>
-          <FinancialChart />
+          <FinancialChart lang={lang} />
         </div>
       </section>
       <section className="business-section financial-operations-section">
-        <SectionHeader eyebrow="Capital and Cost" title="Investment, Unit Economics and Payback" />
+        <SectionHeader eyebrow={copy.operationsHeader[0]} title={copy.operationsHeader[1]} />
         <div className="financial-operations-grid">
           <div className="financial-table-pane financial-investment-pane">
-            <FinancialPaneHeading eyebrow="Investment" title="Initial Investment" />
+            <FinancialPaneHeading eyebrow={copy.investmentPane[0]} title={copy.investmentPane[1]} />
             <ResponsiveTable
-              caption="Initial investment table"
+              caption={copy.investmentCaption}
               className="financial-list-table financial-investment-table"
-              headers={["Item", "Estimated Cost"]}
-              rows={businessPlan.financial.initialInvestment}
+              headers={copy.investmentHeaders}
+              note={common.mobileNote}
+              rows={plan.financial.initialInvestment}
             />
           </div>
           <div className="financial-table-pane">
-            <FinancialPaneHeading eyebrow="Variable Cost" title="Cost per Bottle" />
+            <FinancialPaneHeading eyebrow={copy.variablePane[0]} title={copy.variablePane[1]} />
             <ResponsiveTable
-              caption="Variable cost per bottle"
+              caption={copy.variableCaption}
               className="financial-list-table financial-cost-table"
-              headers={["Cost Item", "Estimated Cost per Bottle"]}
-              rows={businessPlan.financial.variableCosts}
+              headers={copy.variableHeaders}
+              note={common.mobileNote}
+              rows={plan.financial.variableCosts}
             />
           </div>
           <div className="financial-table-pane">
-            <FinancialPaneHeading eyebrow="Fixed Cost" title="Monthly Operating Cost" />
+            <FinancialPaneHeading eyebrow={copy.fixedPane[0]} title={copy.fixedPane[1]} />
             <ResponsiveTable
-              caption="Monthly fixed operating costs"
+              caption={copy.fixedCaption}
               className="financial-list-table financial-cost-table"
-              headers={["Cost Item", "Monthly Cost"]}
-              rows={businessPlan.financial.fixedCosts}
+              headers={copy.fixedHeaders}
+              note={common.mobileNote}
+              rows={plan.financial.fixedCosts}
             />
           </div>
         </div>
       </section>
       <section className="business-section financial-projections-section" id="monthly-projection">
-        <SectionHeader eyebrow="Projection" title="Monthly Cash Flow and 5-Year Scale-up" />
+        <SectionHeader eyebrow={copy.projectionHeader[0]} title={copy.projectionHeader[1]} />
         <div className="financial-projections-grid">
           <div className="financial-table-pane financial-monthly-pane">
-            <FinancialPaneHeading eyebrow="12-Month Projection" title="Cash Flow, Unit: CNY 10,000" />
+            <FinancialPaneHeading eyebrow={copy.monthlyPane[0]} title={copy.monthlyPane[1]} />
             <ResponsiveTable
-              caption="12-month projection, unit CNY 10,000"
+              caption={copy.monthlyCaption}
               className="financial-list-table financial-projection-table financial-monthly-table"
-              note="Scroll horizontally on mobile."
-              headers={["Month", "Sales Volume", "Revenue", "Variable Cost", "Fixed Cost", "After-tax Cash Flow", "Cumulative Cash"]}
-              rows={businessPlan.financial.monthlyProjection}
+              note={common.mobileNote}
+              headers={copy.monthlyHeaders}
+              rows={plan.financial.monthlyProjection}
             />
           </div>
           <div className="financial-table-pane financial-yearly-table-pane">
-            <FinancialPaneHeading eyebrow="5-Year Projection" title="Scale-up View, Unit: CNY million" />
+            <FinancialPaneHeading eyebrow={copy.yearlyPane[0]} title={copy.yearlyPane[1]} />
             <ResponsiveTable
-              caption="5-year projection, unit CNY million"
+              caption={copy.yearlyCaption}
               className="financial-list-table financial-projection-table financial-yearly-table"
-              note="Scroll horizontally on mobile."
-              headers={["Year", "Sales Volume", "Revenue", "Variable Cost", "Fixed Cost", "Estimated Net Profit", "Cumulative Cash after Initial Investment"]}
-              rows={businessPlan.financial.yearlyProjection}
+              note={common.mobileNote}
+              headers={copy.yearlyHeaders}
+              rows={plan.financial.yearlyProjection}
             />
           </div>
-          <FiveYearMotionChart />
+          <FiveYearMotionChart lang={lang} />
         </div>
       </section>
       <section className="business-section financial-sensitivity-section financial-risk-section" id="sensitivity">
-        <SectionHeader eyebrow="Sensitivity Analysis" title="Downside, Upside and Investor Response" />
+        <SectionHeader eyebrow={copy.sensitivityHeader[0]} title={copy.sensitivityHeader[1]} />
         <div className="financial-risk-layout">
           <ResponsiveTable
-            caption="Sensitivity analysis"
+            caption={copy.sensitivityCaption}
             className="financial-list-table financial-sensitivity-table"
-            headers={["Scenario", "Year 1 Net Profit", "Change vs Base Case", "Response Strategy"]}
-            rows={businessPlan.financial.sensitivity}
+            headers={copy.sensitivityHeaders}
+            note={common.mobileNote}
+            rows={plan.financial.sensitivity}
           />
           <div className="financial-risk-side">
             <div className="financial-table-pane">
-              <FinancialPaneHeading eyebrow="Break-even" title="Payback and ROI" />
+              <FinancialPaneHeading eyebrow={copy.breakEvenPane[0]} title={copy.breakEvenPane[1]} />
               <ResponsiveTable
-                caption="Break-even, payback and ROI formulas"
+                caption={copy.breakEvenCaption}
                 className="financial-list-table financial-break-even-table"
-                headers={["Metric", "Value", "Formula / Notes"]}
-                rows={businessPlan.financial.breakEven}
+                headers={copy.breakEvenHeaders}
+                note={common.mobileNote}
+                rows={plan.financial.breakEven}
               />
             </div>
-            <FinancialInvestorPanel />
+            <FinancialInvestorPanel lang={lang} />
           </div>
         </div>
       </section>
@@ -1122,6 +2098,8 @@ function FinancialPlanPage() {
 }
 
 function ContactPage({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].contact;
+  const plan = getLocalizedPlan(lang);
   const [submitted, setSubmitted] = useState(false);
   const [consent, setConsent] = useState(false);
   const [fieldScrollProgress, setFieldScrollProgress] = useState(0);
@@ -1159,22 +2137,19 @@ function ContactPage({ lang }: { lang: Lang }) {
   return (
     <>
       <SectionHero
-        eyebrow="Contact and Sales Information"
-        title="Get in touch with Vital Glow Biosciences"
-        subtitle="Customer support, investor relations, quality traceability and partnership channels."
-        body="This demo form is a front-end mock for Phase 3 acceptance. It records no data and sends no email."
+        eyebrow={copy.hero.eyebrow}
+        title={copy.hero.title}
+        subtitle={copy.hero.subtitle}
+        body={copy.hero.body}
         image={assets.businessContact}
-        imageAlt="Vital Radiance branded traceability and support channel scene"
-        actions={[
-          ["Investor Email", "mailto:investor@vitalglowbio.com"],
-          ["Customer Support", "mailto:support@vitalglowbio.com"]
-        ]}
+        imageAlt={copy.hero.imageAlt}
+        actions={copy.hero.actions}
       />
       <section className="business-section two-column visual-led">
         <div>
-          <SectionHeader eyebrow="Contact Cards" title="Reach the Right Team" />
+          <SectionHeader eyebrow={copy.cardsHeader[0]} title={copy.cardsHeader[1]} />
           <div className="business-card-grid contact-grid compact-grid">
-            {businessPlan.contact.cards.map(([title, email, body]) => (
+            {plan.contact.cards.map(([title, email, body]) => (
               <article className="contact-panel" key={title}>
                 <Mail size={22} />
                 <h3>{title}</h3>
@@ -1186,13 +2161,10 @@ function ContactPage({ lang }: { lang: Lang }) {
         </div>
         <ImageStoryPanel
           image={assets.businessContactSupport}
-          alt="Vital Radiance branded support scene with traceability and channel icons"
-          title="Support with a traceable quality backbone"
-          body="Contact information now has a premium operational context, matching the tone of the HOME and hero pages."
-          stats={[
-            ["Support", "48h target"],
-            ["Channels", "4 teams"]
-          ]}
+          alt={copy.supportStory.alt}
+          title={copy.supportStory.title}
+          body={copy.supportStory.body}
+          stats={copy.supportStory.stats}
         />
       </section>
       <section className="business-section two-column contact-section">
@@ -1204,7 +2176,7 @@ function ContactPage({ lang }: { lang: Lang }) {
             setSubmitted(true);
           }}
         >
-          <SectionHeader eyebrow="Enterprise Inquiry" title="Send a Detailed Inquiry" />
+          <SectionHeader eyebrow={copy.formHeader[0]} title={copy.formHeader[1]} />
           <div
             className="contact-form-field-shell"
             style={
@@ -1216,105 +2188,94 @@ function ContactPage({ lang }: { lang: Lang }) {
           >
             <div className="contact-form-fields" ref={fieldScrollRef}>
               <label>
-                Full Name
+                {copy.form.labels.name}
                 <input required name="name" autoComplete="name" />
               </label>
               <label>
-                Work Email
+                {copy.form.labels.email}
                 <input required type="email" name="email" autoComplete="email" />
               </label>
               <label>
-                Company / Organization
+                {copy.form.labels.company}
                 <input required name="company" autoComplete="organization" />
               </label>
               <label>
-                Role / Department
+                {copy.form.labels.role}
                 <input name="role" autoComplete="organization-title" />
               </label>
               <label>
-                Phone / WhatsApp
+                {copy.form.labels.phone}
                 <input type="tel" name="phone" autoComplete="tel" />
               </label>
               <label>
-                Market / Region
-                <input name="market" placeholder="Hong Kong, Southeast Asia, EU..." />
+                {copy.form.labels.market}
+                <input name="market" placeholder={copy.form.placeholders.market} />
               </label>
               <label>
-                Inquiry Type
+                {copy.form.labels.type}
                 <select required name="type" defaultValue="">
                   <option value="" disabled>
-                    Select one
+                    {copy.form.selects.one}
                   </option>
-                  <option>Customer Support</option>
-                  <option>Investor Relations</option>
-                  <option>Quality & Traceability</option>
-                  <option>Retail / Distributor Partnership</option>
-                  <option>Wholesale / Corporate Wellness</option>
-                  <option>Regulatory Documentation</option>
+                  {copy.form.selects.type.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
                 </select>
               </label>
               <label>
-                Product / Program Interest
+                {copy.form.labels.interest}
                 <select name="interest" defaultValue="">
                   <option value="" disabled>
-                    Select one
+                    {copy.form.selects.one}
                   </option>
-                  <option>Vital Radiance softgel</option>
-                  <option>Subscription program</option>
-                  <option>Retail bundle</option>
-                  <option>Private consultation</option>
-                  <option>Investor materials</option>
+                  {copy.form.selects.interest.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
                 </select>
               </label>
               <label>
-                Estimated Annual Volume
+                {copy.form.labels.volume}
                 <select name="volume" defaultValue="">
                   <option value="" disabled>
-                    Select range
+                    {copy.form.selects.range}
                   </option>
-                  <option>Under 1,000 bottles</option>
-                  <option>1,000-10,000 bottles</option>
-                  <option>10,000-50,000 bottles</option>
-                  <option>50,000+ bottles</option>
-                  <option>Not applicable</option>
+                  {copy.form.selects.volume.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
                 </select>
               </label>
               <label>
-                Target Launch Timeline
+                {copy.form.labels.timeline}
                 <select name="timeline" defaultValue="">
                   <option value="" disabled>
-                    Select timing
+                    {copy.form.selects.timing}
                   </option>
-                  <option>Immediate</option>
-                  <option>1-3 months</option>
-                  <option>3-6 months</option>
-                  <option>6+ months</option>
-                  <option>Exploratory</option>
+                  {copy.form.selects.timeline.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
                 </select>
               </label>
               <label>
-                Documentation Needed
+                {copy.form.labels.documentation}
                 <select name="documentation" defaultValue="">
                   <option value="" disabled>
-                    Select one
+                    {copy.form.selects.one}
                   </option>
-                  <option>COA / batch release summary</option>
-                  <option>Ingredient and allergen details</option>
-                  <option>Business plan / financial deck</option>
-                  <option>Retail partnership kit</option>
-                  <option>No documents yet</option>
+                  {copy.form.selects.documentation.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
                 </select>
               </label>
               <label>
-                Order / Batch Number
-                <input name="batch" placeholder="Optional" />
+                {copy.form.labels.batch}
+                <input name="batch" placeholder={copy.form.placeholders.batch} />
               </label>
               <label>
-                Preferred Contact Window
-                <input name="contactWindow" placeholder="Weekdays, 9:00-18:00 HKT" />
+                {copy.form.labels.contactWindow}
+                <input name="contactWindow" placeholder={copy.form.placeholders.contactWindow} />
               </label>
               <label className="contact-field-full">
-                Message / Requirements
+                {copy.form.labels.message}
                 <textarea required name="message" rows={6} />
               </label>
             </div>
@@ -1333,25 +2294,23 @@ function ContactPage({ lang }: { lang: Lang }) {
               }}
             >
               <span aria-hidden="true" />
-              <span>I understand this demo form does not send real email.</span>
+              <span>{copy.form.consent}</span>
             </button>
             <button className="primary-cta" type="submit">
-              Submit Mock Inquiry
+              {copy.form.submit}
               <ChevronRight size={18} />
             </button>
             {submitted && (
               <p className="form-success" role="status">
-                {lang === "zh"
-                  ? "Mock inquiry submitted. Demo success message is visible."
-                  : "Mock inquiry submitted. The success message is visible for acceptance testing."}
+                {copy.form.success}
               </p>
             )}
           </div>
         </form>
         <div className="contact-commercial-pane">
-          <SectionHeader eyebrow="Sales Information" title="Commercial Options" />
+          <SectionHeader eyebrow={copy.salesHeader[0]} title={copy.salesHeader[1]} />
           <div className="sales-list contact-sales-list">
-            {businessPlan.contact.sales.map(([title, body], index) => (
+            {plan.contact.sales.map(([title, body], index) => (
               <ValuePanel
                 className="contact-sales-card"
                 key={title}
@@ -1361,20 +2320,23 @@ function ContactPage({ lang }: { lang: Lang }) {
               />
             ))}
           </div>
-          <OfficeLocationCard />
+          <OfficeLocationCard lang={lang} />
         </div>
       </section>
       <PageCTA
         className="contact-final-cta"
-        title="Interested in partnership or investment?"
-        href="mailto:investor@vitalglowbio.com"
-        label="Email Investor Relations"
+        title={copy.cta[0]}
+        href={copy.cta[1]}
+        label={copy.cta[2]}
       />
     </>
   );
 }
 
-function OfficeLocationCard() {
+function OfficeLocationCard({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].contact.location;
+  const plan = getLocalizedPlan(lang);
+
   return (
     <div className="office-card office-location-card">
       <div className="location-zoom" aria-hidden="true">
@@ -1397,8 +2359,8 @@ function OfficeLocationCard() {
             <rect className="map-zoom-box" x="218" y="136" width="70" height="44" rx="7" />
             <path className="location-route-line" d="M202 118 C224 126 246 141 266 161" />
           </svg>
-          <span className="location-stage-tag">SOUTH CHINA</span>
-          <span className="location-scale">Guangzhou / Shenzhen / Hong Kong</span>
+          <span className="location-stage-tag">{copy.southChina}</span>
+          <span className="location-scale">{copy.regionScale}</span>
         </div>
         <div className="location-stage location-stage-prd">
           <svg className="location-outline real-map-outline" viewBox="0 0 360 220" role="img">
@@ -1420,8 +2382,8 @@ function OfficeLocationCard() {
             <rect className="map-zoom-box map-zoom-box-local" x="228" y="138" width="60" height="44" rx="7" />
             <path className="location-route-line" d="M112 86 C157 96 214 130 262 162" />
           </svg>
-          <span className="location-stage-tag">PEARL RIVER DELTA</span>
-          <span className="location-scale">zoom target: Hong Kong harbour</span>
+          <span className="location-stage-tag">{copy.prd}</span>
+          <span className="location-scale">{copy.prdScale}</span>
         </div>
         <div className="location-stage location-stage-hongkong">
           <svg className="location-outline location-hk-outline real-map-outline" viewBox="0 0 360 220" role="img">
@@ -1444,19 +2406,19 @@ function OfficeLocationCard() {
           </svg>
           <span className="location-pin">
             <MapPin size={14} />
-            <b>HONG KONG</b>
+            <b>{copy.hongKong}</b>
           </span>
-          <span className="location-stage-tag">LOCAL DETAIL</span>
-          <span className="location-scale">office area lock-on</span>
+          <span className="location-stage-tag">{copy.local}</span>
+          <span className="location-scale">{copy.localScale}</span>
         </div>
       </div>
       <div className="office-copy">
         <span>
           <MapPin size={16} />
-          Regional Office
+          {copy.officeLabel}
         </span>
-        <strong>{businessPlan.contact.office}</strong>
-        <small>{businessPlan.contact.hours}</small>
+        <strong>{plan.contact.office}</strong>
+        <small>{plan.contact.hours}</small>
       </div>
     </div>
   );
@@ -1534,26 +2496,18 @@ function FinancialPaneHeading({ eyebrow, title }: { eyebrow: string; title: stri
   );
 }
 
-function FinancialInvestorPanel() {
-  const stats = [
-    ["Base net profit", "CNY 20.92m"],
-    ["Payback", "11.8 months"],
-    ["Year 1 ROI", "104.6%"],
-    ["Break-even", "4,321 / month"]
-  ] as const;
+function FinancialInvestorPanel({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].financial.investor;
 
   return (
     <article className="financial-investor-panel business-card">
       <span>
         <Handshake />
       </span>
-      <h3>Investor Reading</h3>
-      <p>
-        The risk table now sits beside the funding conversation, so downside actions, payback and
-        contact intent are read as one decision path.
-      </p>
+      <h3>{copy.title}</h3>
+      <p>{copy.body}</p>
       <div className="financial-investor-stats">
-        {stats.map(([label, value]) => (
+        {copy.stats.map(([label, value]) => (
           <span key={label}>
             <b>{value}</b>
             {label}
@@ -1561,7 +2515,7 @@ function FinancialInvestorPanel() {
         ))}
       </div>
       <a className="primary-cta" href="#/contact">
-        Contact IR
+        {copy.action}
         <ChevronRight size={18} />
       </a>
     </article>
@@ -1790,10 +2744,13 @@ function ImageStoryPanel({
   );
 }
 
-function ManufacturingSequence() {
+function ManufacturingSequence({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].manufacturing;
+  const plan = getLocalizedPlan(lang);
+
   return (
-    <div className="manufacturing-sequence-grid" aria-label="Manufacturing sequence with visual process cues">
-      {businessPlan.manufacturing.sequence.map((step, index) => {
+    <div className="manufacturing-sequence-grid" aria-label={copy.sequenceAria}>
+      {plan.manufacturing.sequence.map((step, index) => {
         const visual = manufacturingSequenceVisuals[index];
 
         return (
@@ -1813,10 +2770,10 @@ function ManufacturingSequence() {
             <div className="sequence-copy">
               <header>
                 <span className="sequence-icon">{visual.icon}</span>
-                <small>{visual.label}</small>
+                <small>{visual.label[lang]}</small>
               </header>
               <h3>{step}</h3>
-              <p>{visual.body}</p>
+              <p>{visual.body[lang]}</p>
             </div>
           </article>
         );
@@ -1825,12 +2782,15 @@ function ManufacturingSequence() {
   );
 }
 
-function EquipmentFunctionList() {
+function EquipmentFunctionList({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].manufacturing;
+  const plan = getLocalizedPlan(lang);
+
   return (
-    <div className="equipment-function-list" aria-label="Major equipment and function list">
-      <p className="table-note">Major equipment for the proposed softgel production route</p>
+    <div className="equipment-function-list" aria-label={copy.equipmentAria}>
+      <p className="table-note">{copy.equipmentNote}</p>
       <div className="equipment-function-rows">
-        {businessPlan.manufacturing.equipment.map(([equipment, purpose], index) => (
+        {plan.manufacturing.equipment.map(([equipment, purpose], index) => (
           <article className="equipment-function-row" key={equipment} style={{ "--motion-index": index } as React.CSSProperties}>
             <span className="equipment-function-icon">{manufacturingEquipmentIcons[index] ?? <CheckCircle2 />}</span>
             <strong>{equipment}</strong>
@@ -1842,10 +2802,13 @@ function EquipmentFunctionList() {
   );
 }
 
-function QualityCheckpointGrid() {
+function QualityCheckpointGrid({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].manufacturing;
+  const plan = getLocalizedPlan(lang);
+
   return (
-    <div className="quality-checkpoint-grid" aria-label="Manufacturing release checkpoints with visual cues">
-      {businessPlan.manufacturing.quality.map((item, index) => {
+    <div className="quality-checkpoint-grid" aria-label={copy.qualityAria}>
+      {plan.manufacturing.quality.map((item, index) => {
         const visual = manufacturingQualityVisuals[index];
 
         return (
@@ -1865,7 +2828,7 @@ function QualityCheckpointGrid() {
             <div className="qc-copy">
               <span>{visual.icon}</span>
               <h3>{item}</h3>
-              <p>{visual.body}</p>
+              <p>{visual.body[lang]}</p>
             </div>
           </article>
         );
@@ -1942,16 +2905,19 @@ function Timeline({ items }: { items: TableRows }) {
   );
 }
 
-function MarketingSwotBoard() {
+function MarketingSwotBoard({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].marketing;
+  const plan = getLocalizedPlan(lang);
+
   return (
-    <div className="marketing-swot-board" aria-label="Connected SWOT analysis">
+    <div className="marketing-swot-board" aria-label={copy.swotAria}>
       <div className="marketing-swot-flow" aria-hidden="true">
         <span className="swot-flow-line swot-flow-line-x" />
         <span className="swot-flow-line swot-flow-line-y" />
-        <span className="swot-flow-core">Launch Readiness</span>
+        <span className="swot-flow-core">{copy.swotCore}</span>
       </div>
       <div className="swot-grid marketing-swot-grid">
-        {businessPlan.marketing.swot.map(([title, body], index) => {
+        {plan.marketing.swot.map(([title, body], index) => {
           const visual = marketingSwotVisuals[index] ?? marketingSwotVisuals[0];
 
           return (
@@ -1973,23 +2939,26 @@ function MarketingSwotBoard() {
   );
 }
 
-function PlantLayout() {
+function PlantLayout({ lang }: { lang: Lang }) {
+  const copy = businessPageCopy[lang].manufacturing.layout;
+  const plan = getLocalizedPlan(lang);
+
   return (
-    <div className="plant-layout" aria-label="Simplified plant layout diagram">
+    <div className="plant-layout" aria-label={copy.aria}>
       <div className="plant-layout-heading">
-        <p className="section-label">Plant Layout</p>
-        <h2>Simplified Production Flow</h2>
-        <p>Zones show how materials move from receiving to finished-goods storage without losing batch identity.</p>
+        <p className="section-label">{copy.eyebrow}</p>
+        <h2>{copy.title}</h2>
+        <p>{copy.body}</p>
       </div>
       <div className="plant-grid">
-        {businessPlan.manufacturing.layoutZones.map((zone) => (
+        {plan.manufacturing.layoutZones.map((zone) => (
           <span key={zone}>{zone}</span>
         ))}
       </div>
       <div className="semi-finished-panel">
-        <h3>In-process semi-finished goods</h3>
+        <h3>{copy.semiTitle}</h3>
         <div className="semi-finished-grid">
-          {semiFinishedStates.map(([title, body], index) => (
+          {semiFinishedStates[lang].map(([title, body], index) => (
             <article className="semi-finished-card" key={title} style={{ "--motion-index": index } as React.CSSProperties}>
               <strong>{title}</strong>
               <p>{body}</p>
@@ -2001,8 +2970,10 @@ function PlantLayout() {
   );
 }
 
-function FinancialChart() {
-  const rows = businessPlan.financial.yearlyProjection;
+function FinancialChart({ lang }: { lang: Lang }) {
+  const plan = getLocalizedPlan(lang);
+  const copy = businessPageCopy[lang].financial.chart;
+  const rows = plan.financial.yearlyProjection;
   const maxProfit = Math.max(...rows.map((row) => Number(row[5])));
 
   return (
@@ -2010,16 +2981,16 @@ function FinancialChart() {
       <span>
         <BarChart3 />
       </span>
-      <h3>Estimated Net Profit</h3>
-      <p>Unit: CNY million. Rendered in CSS so values stay selectable in the table.</p>
-      <div className="bar-chart" aria-label="Estimated net profit by year">
+      <h3>{copy.title}</h3>
+      <p>{copy.body}</p>
+      <div className="bar-chart" aria-label={copy.aria}>
         {rows.map((row, index) => {
           const profit = Number(row[5]);
           return (
             <div className="bar-column" key={row[0]} style={{ "--motion-index": index } as React.CSSProperties}>
               <i style={{ "--bar-height": `${Math.max(42, (profit / maxProfit) * 170)}px` } as React.CSSProperties} />
               <strong>{row[5]}</strong>
-              <span>{row[0].replace("Year ", "Y")}</span>
+              <span>{copy.shortYears[index]}</span>
             </div>
           );
         })}
@@ -2028,8 +2999,10 @@ function FinancialChart() {
   );
 }
 
-function FiveYearMotionChart() {
-  const rows = businessPlan.financial.yearlyProjection;
+function FiveYearMotionChart({ lang }: { lang: Lang }) {
+  const plan = getLocalizedPlan(lang);
+  const copy = businessPageCopy[lang].financial.fiveYear;
+  const rows = plan.financial.yearlyProjection;
   const maxRevenue = Math.max(...rows.map((row) => Number(row[2])));
   const maxCash = Math.max(...rows.map((row) => Number(row[6])));
   const plotPoints = rows.map((row, index) => {
@@ -2044,9 +3017,9 @@ function FiveYearMotionChart() {
       <span>
         <LineChart />
       </span>
-      <h3>Five-year Growth Motion</h3>
-      <p>Revenue bars rise while cumulative cash draws forward through the scale-up period.</p>
-      <div className="five-year-stage" aria-label="Five-year revenue and cumulative cash animation">
+      <h3>{copy.title}</h3>
+      <p>{copy.body}</p>
+      <div className="five-year-stage" aria-label={copy.aria}>
         <div className="five-year-bars">
           {rows.map((row, index) => {
             const revenue = Number(row[2]);
@@ -2055,7 +3028,7 @@ function FiveYearMotionChart() {
               <div className="five-year-bar" key={row[0]} style={{ "--motion-index": index } as React.CSSProperties}>
                 <i style={{ "--bar-height": `${Math.max(18, (revenue / maxRevenue) * 100)}%` } as React.CSSProperties} />
                 <strong>{row[2]}</strong>
-                <span>{row[0].replace("Year ", "Y")}</span>
+                <span>{copy.shortYears[index]}</span>
               </div>
             );
           })}
@@ -2074,14 +3047,12 @@ function FiveYearMotionChart() {
         </svg>
       </div>
       <div className="five-year-legend">
-        <span>
-          <b>Revenue</b>
-          CNY million
-        </span>
-        <span>
-          <b>Cumulative Cash</b>
-          after initial investment
-        </span>
+        {copy.legend.map(([label, detail]) => (
+          <span key={label}>
+            <b>{label}</b>
+            {detail}
+          </span>
+        ))}
       </div>
     </article>
   );

@@ -38,6 +38,43 @@ const copy = {
     nav: ["Overview", "Formula", "Technology", "Manufacturing", "Pricing", "FAQ"],
     buy: "Buy Now",
     language: "中文",
+    sectionLabels: {
+      snapshot: "01 / Overview",
+      benefits: "02 / Benefits",
+      formula: "03 / Formula",
+      technology: "04 / Technology",
+      manufacturing: "05 / Manufacturing",
+      quality: "06 / Quality",
+      pricing: "07 / Pricing",
+      faq: "08 / FAQ"
+    },
+    specLabels: ["Pack", "Routine", "System"],
+    capsuleCallouts: ["Fill system", "Softgel shell", "Bioactive core"],
+    massLabels: ["Fill mass", "Shell mass", "Total capsule"],
+    matrixName: "Core Matrix",
+    techPoints: [
+      ["elasticity", "Elasticity"],
+      ["hydration", "Hydration"],
+      ["antioxidant", "Antioxidant"]
+    ],
+    backTop: "Back",
+    aria: {
+      opening: "Vital Radiance opening animation",
+      brandHome: "Vital Radiance home",
+      primaryNav: "Primary navigation",
+      toggleMenu: "Toggle menu",
+      formulaProof: "Formula proof points",
+      productReadout: "Product system readout",
+      quickFacts: "Product quick facts",
+      proofMetrics: "Product proof metrics",
+      processFlow: "Manufacturing process flow",
+      faqProgress: "FAQ scroll progress"
+    },
+    alts: {
+      openingBottle: "Vital Radiance bottle",
+      productBottle: "Vital Radiance bottle",
+      capsule: "Softgel capsule deconstruction"
+    },
     heroEyebrow: "Bio-Luminal Product System",
     heroTitle: "Vital Radiance",
     heroSubtitle: "Future Skin Nutrition System",
@@ -149,6 +186,43 @@ const copy = {
     nav: ["概览", "配方", "科技", "制造", "价格", "问答"],
     buy: "立即购买",
     language: "EN",
+    sectionLabels: {
+      snapshot: "01 / 概览",
+      benefits: "02 / 功效",
+      formula: "03 / 配方",
+      technology: "04 / 科技",
+      manufacturing: "05 / 制造",
+      quality: "06 / 质量",
+      pricing: "07 / 价格",
+      faq: "08 / 问答"
+    },
+    specLabels: ["包装", "用量", "系统"],
+    capsuleCallouts: ["填充体系", "软胶囊壳", "活性核心"],
+    massLabels: ["填充量", "胶囊壳", "胶囊总量"],
+    matrixName: "核心矩阵",
+    techPoints: [
+      ["elasticity", "弹性"],
+      ["hydration", "水润"],
+      ["antioxidant", "抗氧化"]
+    ],
+    backTop: "顶部",
+    aria: {
+      opening: "Vital Radiance 开场动画",
+      brandHome: "Vital Radiance 首页",
+      primaryNav: "主导航",
+      toggleMenu: "打开或关闭菜单",
+      formulaProof: "配方证明点",
+      productReadout: "产品系统读数",
+      quickFacts: "产品快速信息",
+      proofMetrics: "产品指标",
+      processFlow: "生产流程",
+      faqProgress: "问答阅读进度"
+    },
+    alts: {
+      openingBottle: "Vital Radiance 产品瓶",
+      productBottle: "Vital Radiance 产品瓶",
+      capsule: "软胶囊结构拆解"
+    },
     heroEyebrow: "Bio-Luminal 产品系统",
     heroTitle: "Vital Radiance",
     heroSubtitle: "未来肌肤营养系统",
@@ -1049,7 +1123,7 @@ function App() {
   }, [isHome, route]);
 
   const benefitIcons = [<Droplets key="hydration" />, <Orbit key="elasticity" />, <Shield key="shield" />];
-  const techPoints = ["Elasticity", "Hydration", "Antioxidant"];
+  const techPoints = t.techPoints;
   const shellClassName = [
     "site-shell",
     introVisible ? "intro-active" : "",
@@ -1100,10 +1174,10 @@ function App() {
         <span className="atmosphere-current current-three" />
       </div>
       {isHome && introVisible && (
-        <section className="opening-sequence" aria-label="Vital Radiance opening animation">
+        <section className="opening-sequence" aria-label={t.aria.opening}>
           <div className="opening-grid" aria-hidden="true" />
           <div className="opening-product">
-            <img src={assets.productCutout} alt="Vital Radiance bottle" />
+            <img src={assets.productCutout} alt={t.alts.openingBottle} />
             <span className="opening-ring opening-ring-one" aria-hidden="true" />
             <span className="opening-ring opening-ring-two" aria-hidden="true" />
             <i className="opening-capsule opening-capsule-one" aria-hidden="true" />
@@ -1119,11 +1193,11 @@ function App() {
       )}
       <div className="scroll-progress" style={{ transform: `scaleX(${scrollProgress})` }} />
       <header className={navClassName} style={navStyle}>
-        <a className="brand" href="#/" aria-label="Vital Radiance home">
+        <a className="brand" href="#/" aria-label={t.aria.brandHome}>
           <span className="brand-mark">VR</span>
           <span>Vital Radiance</span>
         </a>
-        <nav ref={navLinksRef} className={navLinksClassName} style={navLinksStyle} aria-label="Primary navigation">
+        <nav ref={navLinksRef} className={navLinksClassName} style={navLinksStyle} aria-label={t.aria.primaryNav}>
           <span className="nav-active-glider" aria-hidden="true" />
           {businessPlan.routes.map((navRoute) => (
             <a
@@ -1145,7 +1219,7 @@ function App() {
           <a className="buy-button" href="#/contact">
             {lang === "zh" ? "联系" : "Contact"}
           </a>
-          <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
+          <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label={t.aria.toggleMenu}>
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -1190,7 +1264,7 @@ function App() {
             <h1>{t.heroTitle}</h1>
             <h2>{t.heroSubtitle}</h2>
             <p>{t.heroBody}</p>
-            <div className="hero-proof" aria-label="Formula proof points">
+            <div className="hero-proof" aria-label={t.aria.formulaProof}>
               {t.proofMetrics.slice(0, 3).map(([value, label]) => (
                 <span key={label}>
                   <strong>{value}</strong>
@@ -1208,7 +1282,7 @@ function App() {
               </a>
             </div>
           </div>
-          <div className="hero-console" aria-label="Product system readout">
+          <div className="hero-console" aria-label={t.aria.productReadout}>
             {t.heroConsole.map(([label, value]) => (
               <React.Fragment key={label}>
                 <span>{label}</span>
@@ -1222,7 +1296,7 @@ function App() {
             <span />
             <span />
           </div>
-          <div className="stat-strip" aria-label="Product quick facts">
+          <div className="stat-strip" aria-label={t.aria.quickFacts}>
             {t.stats.map((stat) => (
               <span key={stat}>{stat}</span>
             ))}
@@ -1235,11 +1309,11 @@ function App() {
 
         <section className="snapshot page-section" id="snapshot" data-snap-section>
           <div className="section-copy">
-            <p className="section-label">01 / Overview</p>
+            <p className="section-label">{t.sectionLabels.snapshot}</p>
             <h2>{t.snapshotTitle}</h2>
             <p>{t.snapshotBody}</p>
           </div>
-          <div className="proof-wall" aria-label="Product proof metrics">
+          <div className="proof-wall" aria-label={t.aria.proofMetrics}>
             {t.proofMetrics.map(([value, label]) => (
               <article key={label}>
                 <strong>{value}</strong>
@@ -1251,26 +1325,26 @@ function App() {
             <div className="product-glow" aria-hidden="true" />
             <span className="stage-ring ring-one" aria-hidden="true" />
             <span className="stage-ring ring-two" aria-hidden="true" />
-            <img className="product-cutout product-main" src={assets.productCutout} alt="Vital Radiance bottle" />
+            <img className="product-cutout product-main" src={assets.productCutout} alt={t.alts.productBottle} />
             {Array.from({ length: 7 }).map((_, index) => (
               <i className={`orbit-capsule capsule-${index + 1}`} key={index} aria-hidden="true" />
             ))}
           </div>
           <div className="spec-grid">
-            <Spec icon={<PackageCheck />} label="Pack" value={t.stats[0]} />
-            <Spec icon={<BadgeCheck />} label="Routine" value={t.stats[1]} />
-            <Spec icon={<ShieldCheck />} label="System" value={t.stats[2]} />
+            <Spec icon={<PackageCheck />} label={t.specLabels[0]} value={t.stats[0]} />
+            <Spec icon={<BadgeCheck />} label={t.specLabels[1]} value={t.stats[1]} />
+            <Spec icon={<ShieldCheck />} label={t.specLabels[2]} value={t.stats[2]} />
           </div>
         </section>
 
-        <BusinessSnapshot />
+        <BusinessSnapshot lang={lang} />
 
         <section className="benefits page-section" data-snap-section>
           <div className="wide-media">
             <img src={assets.productScene} alt="" />
           </div>
           <div className="section-copy right">
-            <p className="section-label">02 / Benefits</p>
+            <p className="section-label">{t.sectionLabels.benefits}</p>
             <h2>{t.benefitTitle}</h2>
           </div>
           <div className="benefit-grid">
@@ -1287,24 +1361,24 @@ function App() {
 
         <section className="formula page-section" id="formula" data-snap-section>
           <div className="section-copy">
-            <p className="section-label">03 / Formula</p>
+            <p className="section-label">{t.sectionLabels.formula}</p>
             <h2>{t.formulaTitle}</h2>
             <p>{t.formulaBody}</p>
           </div>
           <div className="capsule-panel">
-            <img src={assets.capsule} alt="Softgel capsule deconstruction" />
+            <img src={assets.capsule} alt={t.alts.capsule} />
             <div className="capsule-callouts" aria-hidden="true">
-              <span className="callout fill">Fill system</span>
-              <span className="callout shell">Softgel shell</span>
-              <span className="callout active">Bioactive core</span>
+              <span className="callout fill">{t.capsuleCallouts[0]}</span>
+              <span className="callout shell">{t.capsuleCallouts[1]}</span>
+              <span className="callout active">{t.capsuleCallouts[2]}</span>
             </div>
             <div className="mass-readout">
               <span>500 mg</span>
-              <span>Fill mass</span>
+              <span>{t.massLabels[0]}</span>
               <span>200 mg</span>
-              <span>Shell mass</span>
+              <span>{t.massLabels[1]}</span>
               <span>700 mg</span>
-              <span>Total capsule</span>
+              <span>{t.massLabels[2]}</span>
             </div>
           </div>
           <div className="ingredient-wrap">
@@ -1334,21 +1408,21 @@ function App() {
             ))}
           </div>
           <div className="section-copy floating">
-            <p className="section-label">04 / Technology</p>
-            <span className="matrix-name">Core Matrix</span>
+            <p className="section-label">{t.sectionLabels.technology}</p>
+            <span className="matrix-name">{t.matrixName}</span>
             <h2>{t.technologyTitle}</h2>
             <p>{t.technologyBody}</p>
           </div>
           <div className="tech-points">
-            {techPoints.map((point) => (
-              <span className={point.toLowerCase()} key={point}>
-                {point}
+            {techPoints.map(([key, label]) => (
+              <span className={key} key={key}>
+                {label}
               </span>
             ))}
           </div>
           <div className="tech-marker-layer" aria-hidden="true">
-            {techPoints.map((point) => (
-              <span className={`tech-marker ${point.toLowerCase()}`} key={point}>
+            {techPoints.map(([key]) => (
+              <span className={`tech-marker ${key}`} key={key}>
                 <i />
               </span>
             ))}
@@ -1357,10 +1431,10 @@ function App() {
 
         <section className="manufacturing page-section" id="manufacturing" data-snap-section>
           <div className="section-copy">
-            <p className="section-label">05 / Manufacturing</p>
+            <p className="section-label">{t.sectionLabels.manufacturing}</p>
             <h2>{t.manufacturingTitle}</h2>
           </div>
-          <div className="process-map" aria-label="Manufacturing process flow">
+          <div className="process-map" aria-label={t.aria.processFlow}>
             {t.steps.map((step, index) => (
               <article className="process-step" key={step}>
                 <img src={assets.manufacturingSteps[index]} alt="" />
@@ -1390,7 +1464,7 @@ function App() {
             <div className="quality-scan" aria-hidden="true" />
           </div>
           <div className="section-copy">
-            <p className="section-label">06 / Quality</p>
+            <p className="section-label">{t.sectionLabels.quality}</p>
             <h2>{t.qualityTitle}</h2>
           </div>
           <div className="quality-grid">
@@ -1408,7 +1482,7 @@ function App() {
             <img src={assets.pricing} alt="" />
           </div>
           <div className="section-copy">
-            <p className="section-label">07 / Pricing</p>
+            <p className="section-label">{t.sectionLabels.pricing}</p>
             <h2>{t.pricingTitle}</h2>
             <p>{t.priceNote}</p>
           </div>
@@ -1429,7 +1503,7 @@ function App() {
 
         <section className="faq page-section" id="faq" data-snap-section>
           <div className="section-copy">
-            <p className="section-label">08 / FAQ</p>
+            <p className="section-label">{t.sectionLabels.faq}</p>
             <h2>{t.faqTitle}</h2>
           </div>
           <div className="faq-list-shell">
@@ -1438,7 +1512,7 @@ function App() {
               viewBox="0 0 100 100"
               preserveAspectRatio="none"
               role="progressbar"
-              aria-label={lang === "zh" ? "问答阅读进度" : "FAQ scroll progress"}
+              aria-label={t.aria.faqProgress}
               aria-valuemin={0}
               aria-valuemax={100}
               aria-valuenow={Math.round(faqProgress * 100)}
@@ -1515,7 +1589,7 @@ function App() {
         onClick={handleBackTopClick}
         type="button"
       >
-        <span className="backtop-label">Back</span>
+        <span className="backtop-label">{t.backTop}</span>
         <span className="backtop-rail" aria-hidden="true" />
         <span className="backtop-arrow" aria-hidden="true">
           <ArrowUp size={26} strokeWidth={3.4} />
