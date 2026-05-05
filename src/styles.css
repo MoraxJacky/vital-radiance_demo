@@ -18258,20 +18258,21 @@ body {
   .business-financial .financial-chart,
   .business-financial .five-year-motion,
   .business-financial .break-even-visual {
-    min-height: 430px;
+    min-height: 430px !important;
   }
 
   .business-financial .financial-chart {
-    min-height: 650px;
+    grid-template-rows: auto auto auto auto !important;
+    min-height: 560px !important;
   }
 
   .business-financial .five-year-motion {
-    min-height: 540px;
+    min-height: 540px !important;
   }
 
   .business-financial .financial-chart .bar-chart {
-    height: 260px !important;
-    min-height: 240px;
+    height: 330px !important;
+    min-height: 320px;
   }
 }
 
