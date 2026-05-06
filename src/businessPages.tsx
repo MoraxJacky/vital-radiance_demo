@@ -2746,7 +2746,7 @@ function DropletMark() {
 
 function ResponsiveTable({
   caption,
-  note = "Scroll horizontally on mobile.",
+  note = "Rows adapt to the current screen.",
   className,
   headers,
   rows

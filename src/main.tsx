@@ -1198,11 +1198,17 @@ function App() {
       )}
       <div className="scroll-progress" style={{ transform: `scaleX(${scrollProgress})` }} />
       <header className={navClassName} style={navStyle}>
-        <a className="brand" href="#/" aria-label={t.aria.brandHome}>
+        <a className="brand" href="#/" aria-label={t.aria.brandHome} onClick={() => setMenuOpen(false)}>
           <span className="brand-mark">VR</span>
           <span>Vital Radiance</span>
         </a>
-        <nav ref={navLinksRef} className={navLinksClassName} style={navLinksStyle} aria-label={t.aria.primaryNav}>
+        <nav
+          ref={navLinksRef}
+          className={navLinksClassName}
+          id="primary-navigation"
+          style={navLinksStyle}
+          aria-label={t.aria.primaryNav}
+        >
           <span className="nav-active-glider" aria-hidden="true" />
           {businessPlan.routes.map((navRoute) => (
             <a
@@ -1217,14 +1223,21 @@ function App() {
           ))}
         </nav>
         <div className="nav-actions">
-          <button className="ghost-button" onClick={() => setLang(lang === "en" ? "zh" : "en")}>
+          <button className="ghost-button" onClick={() => setLang(lang === "en" ? "zh" : "en")} type="button">
             <Globe2 size={16} />
             {t.language}
           </button>
-          <a className="buy-button" href="#/contact">
+          <a className="buy-button" href="#/contact" onClick={() => setMenuOpen(false)}>
             {lang === "zh" ? "联系" : "Contact"}
           </a>
-          <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label={t.aria.toggleMenu}>
+          <button
+            className="menu-button"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-controls="primary-navigation"
+            aria-expanded={menuOpen}
+            aria-label={t.aria.toggleMenu}
+            type="button"
+          >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -1238,10 +1251,10 @@ function App() {
             <source media="(max-width: 720px)" srcSet={assets.heroMobile} />
             <img className="hero-bg" src={assets.hero} alt="" />
           </picture>
-          <div className="hero-orb" />
-          <div className="hero-scan" />
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
+          <div className="hero-orb" aria-hidden="true" />
+          <div className="hero-scan" aria-hidden="true" />
+          <div className="orbit orbit-one" aria-hidden="true" />
+          <div className="orbit orbit-two" aria-hidden="true" />
           <div className="hero-motion-scene" aria-hidden="true">
             <div className="motion-ribbon ribbon-one" />
             <div className="motion-ribbon ribbon-two" />
